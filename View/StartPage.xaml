@@ -16,26 +16,28 @@
             HorizontalOptions="Center">
         </Label>
 
-        <ListView>
+        <ListView
+            ItemsSource="{Binding CategoryTitle}">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate
+                    x:DataType="{x:Type x:String}">
                     <Label
-                        >
-                        
+                       Text="{Binding .}"
+                        FontSize="20">
                     </Label>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         
         
-        <Button
+        <!--<Button
           Text="View Recipe"
          TextColor="Black">
         </Button>
         <Label
             Text="{Binding RecipeTitle}"
-            FontSize="20">
-        </Label>
+            FontSize="16">
+        </Label>-->
 
     </VerticalStackLayout>
 </ContentPage>
