@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecipeApp.Models.LogInPage"
+             xmlns:viewmodel="clr-namespace:RecipeApp.ViewModels"
+             x:DataType="viewmodel:LogInPageViewModel"
+             Title="Log In">
+    
+    <VerticalStackLayout>
+        <Entry
+            Placeholder="Username"
+            Text="{Binding UserNameInput}"
+            PlaceholderColor="WhiteSmoke"
+            FontSize="Subtitle"
+            TextColor="GhostWhite"
+            HorizontalOptions="Start"
+            MaxLength="25"
+        />
+        <Entry
+            Placeholder="Password"
+            Text="{Binding PasswordInput}"
+            PlaceholderColor="WhiteSmoke"
+            FontSize="Subtitle"
+            TextColor="GhostWhite"
+            HorizontalOptions="Start"
+            MaxLength="20"
+        />
+        <Button
+            Text="Log in"
+            TextColor="Black"
+            HorizontalOptions="Start"
+            FontSize="20"
+            Command="{Binding TryLogInAsyncCommand}"
+            />
+        <Label
+            Text="{Binding LogInStatus}"
+            FontSize="25"
+            HorizontalTextAlignment="Start"
+            />
+        <Button
+            Text="Continue"
+            TextColor="Black"
+            Clicked="ToStartPage"
+            HorizontalOptions="Start">
+        </Button>
+    </VerticalStackLayout>
+</ContentPage>

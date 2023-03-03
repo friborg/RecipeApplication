@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecipeApp.Models.StartPage"
+             xmlns:viewmodel="clr-namespace:RecipeApp.ViewModels"
+             x:DataType="viewmodel:StartPageViewModel">
+    <VerticalStackLayout>
+        <Label 
+            Text="{Binding Date}"
+            HorizontalOptions="Center"
+            FontSize="20" >
+        </Label>
+        <Label
+            Text="Choose a category and get a random recipe!"
+            FontSize="18"
+            HorizontalOptions="Center">
+        </Label>
+
+        <ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Label
+                        >
+                        
+                    </Label>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        
+        <Button
+          Text="View Recipe"
+         TextColor="Black">
+        </Button>
+        <Label
+            Text="{Binding RecipeTitle}"
+            FontSize="20">
+        </Label>
+
+    </VerticalStackLayout>
+</ContentPage>

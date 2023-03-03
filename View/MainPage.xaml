@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecipeApp.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label
+                Text="Welcome to 'Whats for Dinner?'"
+                HorizontalOptions="Center"
+                FontSize="30"
+                TextColor="White"
+                />
+            <Grid
+                RowDefinitions="65, 65"
+                ColumnDefinitions="120, 300"
+                Padding="120"
+                VerticalOptions="End"
+                HorizontalOptions="Center">
+                <Button
+            Text="Log in"
+                    TextColor="Black"
+            FontSize="Subtitle"
+            Clicked="LogInUser"
+            HorizontalOptions="Center"
+            Grid.Column="0"
+            Grid.Row="0"
+            />
+                <Button
+            Text="Register new user"
+                    TextColor="Black"
+            FontSize="Subtitle"
+            HorizontalOptions="Center"
+            Clicked="RegisterUser"
+            Grid.Column="1"
+            Grid.Row="0"
+                />
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
