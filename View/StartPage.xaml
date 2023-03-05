@@ -15,12 +15,17 @@
             FontSize="18"
             HorizontalOptions="Center">
         </Label>
+        <Label
+            Text="{Binding CategoryTitle}"
+            HorizontalOptions="Center"
+            FontSize="18">
+            
+        </Label>
 
         <ListView
-            ItemsSource="{Binding CategoryTitle}">
+            ItemsSource="{Binding CategoryNames}">
             <ListView.ItemTemplate>
-                <DataTemplate
-                    x:DataType="{x:Type x:String}">
+                <DataTemplate>
                     <Label
                        Text="{Binding .}"
                         FontSize="20">
@@ -28,8 +33,20 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
-        
+
+        <!--<CollectionView
+            ItemsSource="{Binding CategoryNames}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label
+                       Text="{Binding .}"
+                        FontSize="20">
+                    </Label>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>-->
+
+
         <!--<Button
           Text="View Recipe"
          TextColor="Black">

@@ -25,7 +25,13 @@ namespace RecipeApp.ViewModels
         ObservableCollection<CategoriesRoot> categoryCollection;
 
         [ObservableProperty]
+        CategoriesRoot category;
+
+        [ObservableProperty]
         string categoryTitle;
+
+        [ObservableProperty]
+        ObservableCollection<string> categoryNames;
 
         [ObservableProperty]
         string categoryId;
@@ -34,7 +40,8 @@ namespace RecipeApp.ViewModels
         {
             Date = DateOnly.FromDateTime(DateTime.Now);
             Recipe = new Rootobject();
-            CategoryCollection = new ObservableCollection<CategoriesRoot>();
+            CategoryNames = new ObservableCollection<string>();
+            Category = new CategoriesRoot();
             //RecipeRoot = new RecipeRoot();
             //RecipeTitle = string.Empty;
         }
@@ -47,18 +54,19 @@ namespace RecipeApp.ViewModels
 
         public async Task GetRecipeCategories()
         {
-            CategoryCollection = await API.GetCategory();
-            foreach (var c in CategoryCollection)
-            {
-                foreach (var item in c.categories)
+            //CategoryCollection = await API.GetCategory();
+            Category = await API.GetCategory();
+            //foreach (var c in CategoryCollection)
+            //{
+                foreach (var item in Category.categories.Where(c => c.title == "MÅLTID"))
                 {
                     CategoryTitle = item.title;
                     foreach (var option in item.options)
                     {
-                        CategoryId = option.id;
+                        CategoryNames.Add(option.id);
                     }
                 }
-            }
+            //}
         }
     }
 }
