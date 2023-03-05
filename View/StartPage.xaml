@@ -19,22 +19,9 @@
             Text="{Binding CategoryTitle}"
             HorizontalOptions="Center"
             FontSize="18">
-            
         </Label>
 
-        <ListView
-            ItemsSource="{Binding CategoryNames}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Label
-                       Text="{Binding .}"
-                        FontSize="20">
-                    </Label>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-        <!--<CollectionView
+        <CollectionView
             ItemsSource="{Binding CategoryNames}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -44,7 +31,7 @@
                     </Label>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-        </CollectionView>-->
+        </CollectionView>
 
 
         <!--<Button
