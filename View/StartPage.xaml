@@ -5,33 +5,47 @@
              xmlns:viewmodel="clr-namespace:RecipeApp.ViewModels"
              x:DataType="viewmodel:StartPageViewModel">
     <VerticalStackLayout>
-        <Label 
+        <Grid
+            RowDefinitions="20, Auto, Auto, Auto"
+            ColumnDefinitions="Auto, Auto, Auto">
+            <Label 
             Text="{Binding Date}"
-            HorizontalOptions="Center"
-            FontSize="20" >
-        </Label>
+            Grid.Row="0"
+            Grid.Column="1">
+            </Label>
+            <Button
+                Text=" - "
+            Grid.Row="0"
+            Grid.Column="0"
+            Command="{Binding SubtractDateClickedCommand}">
+            </Button>
+            <Button
+                Text=" + "
+            Grid.Row="0"
+            Grid.Column="2"
+            Command="{Binding AddDateClickedCommand}">
+            </Button>
+
+            <ListView
+                ItemsSource="{Binding Meals}">
+                <ListView.ItemTemplate>
+                    <DataTemplate
+                        x:DataType="{x:Type x:String}">
+                        <Frame
+                            Grid.Column="0"
+                            Grid.Row="1">
+                            <Label
+                            Text="{Binding .}">
+                            </Label>
+                        </Frame>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
         <Label
             Text="{Binding RecipeTitle}">
         </Label>
-        
-        <!--Det ska stå dagens datum följt av "Frukost, Lunch, Middag och ev Mellanmål. Du ska kunna trycka på en knapp för att generera ett random recept
-        och en knapp för att göra en egen entry med titeln på maten. Om det finns ett recept ska du kunna trycka på antingen måltids-titeln eller namnet, för att se hela receptet
-        då söker den på recept-id:t och hämtar hela receptet
-        Recept-id ska sparas i en databas tillsammans med datumet så att det kan hämtas igen när man startar om appen-->
-       
-        
-
-        <CollectionView
-            ItemsSource="{Binding CategoryNames}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Label
-                       Text="{Binding .}"
-                        FontSize="20">
-                    </Label>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>-->
 
     </VerticalStackLayout>
 </ContentPage>

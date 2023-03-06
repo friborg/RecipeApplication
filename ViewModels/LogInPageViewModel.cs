@@ -32,7 +32,7 @@ namespace RecipeApp.ViewModels
         [RelayCommand]
         public async void TryLogInAsync()
         {
-            List<Customer> customerList = await GetProducts();
+            List<Customer> customerList = await GetUsersFromDb();
             foreach (var c in customerList)
             {
                 if (c.UserName == UserNameInput && c.Password == PasswordInput)
@@ -48,10 +48,10 @@ namespace RecipeApp.ViewModels
                 }
             }
         }
-        public async Task<List<Customer>> GetProducts()
+        public async Task<List<Customer>> GetUsersFromDb()
         {
-            List<Customer> productsFromDb = await CustomerDB.CustomerCollection().AsQueryable().ToListAsync();
-            return productsFromDb;
+            List<Customer> usersFromDb = await CustomerDB.CustomerCollection().AsQueryable().ToListAsync();
+            return usersFromDb;
         }
     }
 }

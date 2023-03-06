@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace RecipeApp.Connections
 {
-    public class Rootobject 
-    {
-        public RecipeRootObject[] Recipes { get; set; }
-    }
+    //public class Rootobject 
+    //{
+    //    public RecipeRootObject[] Recipes { get; set; }
+    //}
 
-    public class RecipeRootObject
+    public class Rootobject
     {
         public int Id { get; set; }
         public string Title { get; set; }

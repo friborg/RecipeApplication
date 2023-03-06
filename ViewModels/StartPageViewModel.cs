@@ -20,61 +20,43 @@ namespace RecipeApp.ViewModels
 
         [ObservableProperty]
         string recipeTitle;
+        [ObservableProperty]
+        int recipeId;
 
-        //[ObservableProperty]
-        //ObservableCollection<CategoriesRoot> categoryCollection;
-
-        //[ObservableProperty]
-        //CategoriesRoot category;
-
-        //[ObservableProperty]
-        //string categoryTitle;
-
-        //[ObservableProperty]
-        //ObservableCollection<string> categoryNames;
-
-        //[ObservableProperty]
-        //string categoryId;
+        [ObservableProperty]
+        ObservableCollection<string> meals;
 
         public StartPageViewModel()
         {
             Date = DateOnly.FromDateTime(DateTime.Now);
             Recipe = new Models.RecipeFromSearch();
-            //CategoryNames = new ObservableCollection<string>();
-            //Category = new CategoriesRoot();
-            //RecipeRoot = new RecipeRoot();
-            //RecipeTitle = string.Empty;
+            Meals = new ObservableCollection<string>()
+            {"Frukost", "Lunch", "Middag"};
         }
 
-        //public async Task GetRecipeList()
-        //{
-        //    Recipe = await API.GetRecipes();
-        //    RecipeTitle = Recipe.Recipes[0].Title;
-        //}
+        [RelayCommand]
+        private void SubtractDateClicked()
+        {
+            if (Date > DateOnly.FromDateTime(DateTime.Now)) // någonting buggar här, kan inte subtrahera alls 
+            {
+                Date = Date.AddDays(-1);
+            }
+        }
+
+        [RelayCommand]
+        private void AddDateClicked()
+        {
+            Date = Date.AddDays(1);
+        }
 
         public async Task GetRecipeFromSearch()
         {
             Random random = new Random();
-            string page = random.Next(1, 1000).ToString();
+            string page = random.Next(1, 900).ToString();
+
             Recipe = await API.GetRndRecipeFromKeyword("Frukost", page);
             RecipeTitle = Recipe.Recipes[0].Title;
+            RecipeId = Recipe.Recipes[0].Id;
         }
-
-        //public async Task GetRecipeCategories()
-        //{
-        //    //CategoryCollection = await API.GetCategory();
-        //    Category = await API.GetCategory();
-        //    //foreach (var c in CategoryCollection)
-        //    //{
-        //        foreach (var item in Category.categories.Where(c => c.title == "MÅLTID"))
-        //        {
-        //            CategoryTitle = item.title;
-        //            foreach (var option in item.options)
-        //            {
-        //                CategoryNames.Add(option.id);
-        //            }
-        //        }
-        //    //}
-        //}
     }
 }
