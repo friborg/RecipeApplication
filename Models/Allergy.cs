@@ -9,6 +9,5 @@ namespace RecipeApp.ViewModels
     public class Allergy
     {
         public string Name { get; set; }
-
     }
 }

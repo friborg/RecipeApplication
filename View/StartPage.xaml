@@ -11,15 +11,15 @@
             FontSize="20" >
         </Label>
         <Label
-            Text="Choose a category and get a random recipe!"
-            FontSize="18"
-            HorizontalOptions="Center">
+            Text="{Binding RecipeTitle}">
         </Label>
-        <Label
-            Text="{Binding CategoryTitle}"
-            HorizontalOptions="Center"
-            FontSize="18">
-        </Label>
+        
+        <!--Det ska stå dagens datum följt av "Frukost, Lunch, Middag och ev Mellanmål. Du ska kunna trycka på en knapp för att generera ett random recept
+        och en knapp för att göra en egen entry med titeln på maten. Om det finns ett recept ska du kunna trycka på antingen måltids-titeln eller namnet, för att se hela receptet
+        då söker den på recept-id:t och hämtar hela receptet
+        Recept-id ska sparas i en databas tillsammans med datumet så att det kan hämtas igen när man startar om appen-->
+       
+        
 
         <CollectionView
             ItemsSource="{Binding CategoryNames}">
@@ -31,17 +31,7 @@
                     </Label>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-        </CollectionView>
-
-
-        <!--<Button
-          Text="View Recipe"
-         TextColor="Black">
-        </Button>
-        <Label
-            Text="{Binding RecipeTitle}"
-            FontSize="16">
-        </Label>-->
+        </CollectionView>-->
 
     </VerticalStackLayout>
 </ContentPage>

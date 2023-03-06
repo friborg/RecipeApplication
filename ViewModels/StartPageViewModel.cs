@@ -16,57 +16,65 @@ namespace RecipeApp.ViewModels
         DateOnly date;
 
         [ObservableProperty]
-        Rootobject recipe;
+        Models.RecipeFromSearch recipe;
 
         [ObservableProperty]
         string recipeTitle;
 
-        [ObservableProperty]
-        ObservableCollection<CategoriesRoot> categoryCollection;
+        //[ObservableProperty]
+        //ObservableCollection<CategoriesRoot> categoryCollection;
 
-        [ObservableProperty]
-        CategoriesRoot category;
+        //[ObservableProperty]
+        //CategoriesRoot category;
 
-        [ObservableProperty]
-        string categoryTitle;
+        //[ObservableProperty]
+        //string categoryTitle;
 
-        [ObservableProperty]
-        ObservableCollection<string> categoryNames;
+        //[ObservableProperty]
+        //ObservableCollection<string> categoryNames;
 
-        [ObservableProperty]
-        string categoryId;
+        //[ObservableProperty]
+        //string categoryId;
 
         public StartPageViewModel()
         {
             Date = DateOnly.FromDateTime(DateTime.Now);
-            Recipe = new Rootobject();
-            CategoryNames = new ObservableCollection<string>();
-            Category = new CategoriesRoot();
+            Recipe = new Models.RecipeFromSearch();
+            //CategoryNames = new ObservableCollection<string>();
+            //Category = new CategoriesRoot();
             //RecipeRoot = new RecipeRoot();
             //RecipeTitle = string.Empty;
         }
 
-        public async Task GetRecipeList()
+        //public async Task GetRecipeList()
+        //{
+        //    Recipe = await API.GetRecipes();
+        //    RecipeTitle = Recipe.Recipes[0].Title;
+        //}
+
+        public async Task GetRecipeFromSearch()
         {
-            Recipe = await API.GetRecipes();
+            Random random = new Random();
+            string page = random.Next(1, 1000).ToString();
+            Recipe = await API.GetRndRecipeFromKeyword("Frukost", page);
             RecipeTitle = Recipe.Recipes[0].Title;
         }
 
-        public async Task GetRecipeCategories()
-        {
-            //CategoryCollection = await API.GetCategory();
-            Category = await API.GetCategory();
-            //foreach (var c in CategoryCollection)
-            //{
-                foreach (var item in Category.categories.Where(c => c.title == "MÅLTID"))
-                {
-                    CategoryTitle = item.title;
-                    foreach (var option in item.options)
-                    {
-                        CategoryNames.Add(option.id);
-                    }
-                }
-            //}
-        }
+        //public async Task GetRecipeCategories()
+        //{
+        //    //CategoryCollection = await API.GetCategory();
+        //    Category = await API.GetCategory();
+        //    //foreach (var c in CategoryCollection)
+        //    //{
+        //        foreach (var item in Category.categories.Where(c => c.title == "MÅLTID"))
+        //        {
+        //            CategoryTitle = item.title;
+        //            foreach (var option in item.options)
+        //            {
+        //                CategoryNames.Add(option.id);
+        //            }
+        //        }
+        //    //}
+        //}
     }
 }

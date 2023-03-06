@@ -17,8 +17,8 @@ public partial class StartPage : ContentPage
         base.OnAppearing();
         if (!startPage)
         {
-            await Vm.GetRecipeList();
-            await Vm.GetRecipeCategories();
+            await Vm.GetRecipeFromSearch();
+            //await Vm.GetRecipeCategories();
             startPage = true;
         }
 
