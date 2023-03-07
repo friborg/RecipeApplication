@@ -6,42 +6,63 @@
              x:DataType="viewmodel:StartPageViewModel">
     <VerticalStackLayout>
         <Grid
-            RowDefinitions="20, Auto, Auto, Auto"
-            ColumnDefinitions="Auto, Auto, Auto">
+            RowDefinitions="40"
+            ColumnDefinitions="40, 15, Auto, 15, 40"
+            HorizontalOptions="Center">
             <Label 
             Text="{Binding Date}"
+                TextColor="LightPink"
+                FontSize="28"
             Grid.Row="0"
-            Grid.Column="1">
+            Grid.Column="2">
             </Label>
             <Button
                 Text=" - "
+                TextColor="Black"
+                BackgroundColor="LightPink"
             Grid.Row="0"
             Grid.Column="0"
             Command="{Binding SubtractDateClickedCommand}">
             </Button>
             <Button
                 Text=" + "
+                TextColor="Black"
+                BackgroundColor="LightPink"
             Grid.Row="0"
-            Grid.Column="2"
+            Grid.Column="4"
             Command="{Binding AddDateClickedCommand}">
             </Button>
+        </Grid>
 
-            <ListView
+        <CollectionView
                 ItemsSource="{Binding Meals}">
-                <ListView.ItemTemplate>
-                    <DataTemplate
+            <CollectionView.ItemTemplate>
+                <DataTemplate
                         x:DataType="{x:Type x:String}">
+                    <Grid
+                        RowDefinitions="60, 60, 20"
+                        ColumnDefinitions="120"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
                         <Frame
                             Grid.Column="0"
-                            Grid.Row="1">
+                            Grid.Row="0">
                             <Label
                             Text="{Binding .}">
                             </Label>
                         </Frame>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
+                        <Button
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Text="Recept ex"
+                            TextColor="Black"
+                            BackgroundColor="LightPink"
+                            >
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
         <Label
             Text="{Binding RecipeTitle}">

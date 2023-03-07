@@ -37,7 +37,7 @@ namespace RecipeApp.ViewModels
         [RelayCommand]
         private void SubtractDateClicked()
         {
-            if (Date > DateOnly.FromDateTime(DateTime.Now)) // någonting buggar här, kan inte subtrahera alls 
+            if (Date > DateOnly.FromDateTime(DateTime.Now)) // någonting buggar här (ibland???)
             {
                 Date = Date.AddDays(-1);
             }
@@ -48,8 +48,10 @@ namespace RecipeApp.ViewModels
         {
             Date = Date.AddDays(1);
         }
-
-        public async Task GetRecipeFromSearch()
+        // om man trycker på get random recipe, så sparas den i db med datum och Meal-title, och det är därifrån vi hämtar recpeten för en collectionview
+        // om en slot är null, så skrivs inget ut
+        // ex. from DB where Meal = Frukost && Date = Date
+        public async Task GetRecipeFromSearch() // OBS!!! Om det senaste receptet alltid blir RecipeTitle så kommer alla ändras!
         {
             Random random = new Random();
             string page = random.Next(1, 900).ToString();

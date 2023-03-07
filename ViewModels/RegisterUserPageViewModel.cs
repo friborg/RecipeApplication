@@ -119,7 +119,7 @@ namespace RecipeApp.ViewModels
             };
 
             // kolla så att användarnamnet inte redan finns
-            await CustomerDB.CustomerCollection().InsertOneAsync(customer);
+            await Databases.CustomerCollection().InsertOneAsync(customer);
         }
     }
 }

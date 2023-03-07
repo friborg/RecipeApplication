@@ -50,7 +50,7 @@ namespace RecipeApp.ViewModels
         }
         public async Task<List<Customer>> GetUsersFromDb()
         {
-            List<Customer> usersFromDb = await CustomerDB.CustomerCollection().AsQueryable().ToListAsync();
+            List<Customer> usersFromDb = await Databases.CustomerCollection().AsQueryable().ToListAsync();
             return usersFromDb;
         }
     }

@@ -11,7 +11,7 @@ using RecipeApp.Models;
 
 namespace RecipeApp.Connections
 {
-    internal class CustomerDB
+    internal class Databases
     {
         public static MongoClient MongoConnection()
         {
@@ -31,6 +31,13 @@ namespace RecipeApp.Connections
             var database = client.GetDatabase("MyApp");
             var collection = database.GetCollection<Customer>("MyAppDatabase");
             return collection; 
+        }
+
+        public static void RelationsCollection()
+        {
+            var client = MongoConnection();
+            var database = client.GetDatabase("MyAppDbRelations");
+            var collection = database.GetCollection("MyApp");
         }
     }
 }
