@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RecipeApp.Connections;
+using RecipeApp.Models;
+using MongoDB.Driver;
 
 namespace RecipeApp.ViewModels
 {
@@ -26,9 +28,13 @@ namespace RecipeApp.ViewModels
         [ObservableProperty]
         ObservableCollection<string> meals;
 
+        [ObservableProperty]
+        string loggedInUserName;
+
         public StartPageViewModel()
         {
             Date = DateOnly.FromDateTime(DateTime.Now);
+            LoggedInUserName = LoggedInUser.Username;
             Recipe = new Models.RecipeFromSearch();
             Meals = new ObservableCollection<string>()
             {"Frukost", "Lunch", "Middag"};
@@ -40,25 +46,47 @@ namespace RecipeApp.ViewModels
             if (Date > DateOnly.FromDateTime(DateTime.Now)) // någonting buggar här (ibland???)
             {
                 Date = Date.AddDays(-1);
+                //GetRecipesFromDb();
             }
         }
-
         [RelayCommand]
         private void AddDateClicked()
         {
             Date = Date.AddDays(1);
+            //GetRecipesFromDb();
         }
-        // om man trycker på get random recipe, så sparas den i db med datum och Meal-title, och det är därifrån vi hämtar recpeten för en collectionview
-        // om en slot är null, så skrivs inget ut
-        // ex. from DB where Meal = Frukost && Date = Date
-        public async Task GetRecipeFromSearch() // OBS!!! Om det senaste receptet alltid blir RecipeTitle så kommer alla ändras!
+
+        public void GetRecipesFromDb() 
+        {
+            List<DbRelation> relations = Databases.RelationsCollection().AsQueryable().ToList();
+            //productsFromDb.ForEach(x => Products.Add(x)); ???
+            foreach (DbRelation r in relations.Where(r => r.CurrentDate == Date)) // vi är nu inne i det datumet som syns på skärmen
+            {
+                // måste koppla med mealtitle 
+                // kolla vilken mealtitle receptet har, sen spara id:t för det när man klickar på det
+                // om det inte finns något recept sparat ska det inte skrivas ut någonting
+
+            }
+        }
+        public async Task GetRecipeFromSearch(string keyword)
         {
             Random random = new Random();
             string page = random.Next(1, 900).ToString();
 
-            Recipe = await API.GetRndRecipeFromKeyword("Frukost", page);
-            RecipeTitle = Recipe.Recipes[0].Title;
-            RecipeId = Recipe.Recipes[0].Id;
+            Recipe = await API.GetRndRecipeFromKeyword(keyword, page);
+            string id = Recipe.Recipes[0].Id.ToString();
+            string name = Recipe.Recipes[0].Title.ToString();
+
+            DbRelation relation = new DbRelation()
+            {
+                LoggedInUsername = LoggedInUser.Username,
+                ChosenRecipeId = id,
+                ChosenMealTitle = keyword,
+                ChosenRecipeName = name,
+                CurrentDate = Date
+            };
+            Databases.RelationsCollection().DeleteOne(r => r.CurrentDate == Date && r.ChosenMealTitle == keyword);
+            Databases.RelationsCollection().InsertOne(relation);
         }
     }
 }

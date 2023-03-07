@@ -27,19 +27,18 @@ namespace RecipeApp.ViewModels
         {
            
         }
-
-        //hämta collection med customers under tiden man skriver i uppgifterna och sen använd den i metoden nedan? 
         [RelayCommand]
-        public async void TryLogInAsync()
+        public async Task<bool> TryLogInAsync()
         {
             List<Customer> customerList = await GetUsersFromDb();
+            bool succesfulLogin = false;
             foreach (var c in customerList)
             {
                 if (c.UserName == UserNameInput && c.Password == PasswordInput)
                 {
-                    // loggedInCustomer = c.UserName; //statisk grabb
-                    // här går det inte att använda Navigation, why? 
-                    LogInStatus = "Login successful, press the button below to continue";
+                    LogInStatus = "Login successful!";
+                    LoggedInUser.Username = UserNameInput;
+                    succesfulLogin = true;
                     break;
                 }
                 else
@@ -47,6 +46,7 @@ namespace RecipeApp.ViewModels
                     LogInStatus = "Wrong username or password, please try again";
                 }
             }
+            return succesfulLogin;
         }
         public async Task<List<Customer>> GetUsersFromDb()
         {

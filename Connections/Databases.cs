@@ -33,11 +33,12 @@ namespace RecipeApp.Connections
             return collection; 
         }
 
-        public static void RelationsCollection()
+        public static IMongoCollection<DbRelation> RelationsCollection()
         {
             var client = MongoConnection();
             var database = client.GetDatabase("MyAppDbRelations");
-            var collection = database.GetCollection("MyApp");
+            var collection = database.GetCollection<DbRelation>("MyApp");
+            return collection;
         }
     }
 }

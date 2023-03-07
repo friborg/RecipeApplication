@@ -28,20 +28,15 @@
         <Button
             Text="Log in"
             TextColor="Black"
+            BackgroundColor="LightPink"
             HorizontalOptions="Start"
             FontSize="20"
-            Command="{Binding TryLogInAsyncCommand}"
+            Clicked="ToStartPage"
             />
         <Label
             Text="{Binding LogInStatus}"
             FontSize="25"
             HorizontalTextAlignment="Start"
             />
-        <Button
-            Text="Continue"
-            TextColor="Black"
-            Clicked="ToStartPage"
-            HorizontalOptions="Start">
-        </Button>
     </VerticalStackLayout>
 </ContentPage>

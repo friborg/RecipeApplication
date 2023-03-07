@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace RecipeApp.Models
 {
-        public class RecipeFromSearch
-        {
-            public int NumberOfPages { get; set; }
-            public Recipe[] Recipes { get; set; }
-            public int TotalNumberOfRecipes { get; set; }
-            public string Msg { get; set; }
-        }
+    public class RecipeFromSearch
+    {
+        public int NumberOfPages { get; set; }
+        public Recipe[] Recipes { get; set; }
+        public int TotalNumberOfRecipes { get; set; }
+        public string Msg { get; set; }
+    }
 
-        public class Recipe
+    public class Recipe
         {
             public int Id { get; set; }
             public int ImageId { get; set; }

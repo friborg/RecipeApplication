@@ -4,37 +4,80 @@
              x:Class="RecipeApp.Models.StartPage"
              xmlns:viewmodel="clr-namespace:RecipeApp.ViewModels"
              x:DataType="viewmodel:StartPageViewModel">
-    <VerticalStackLayout>
-        <Grid
+    <Grid>
+        <Button
+                Text="{Binding LoggedInUserName}"
+                TextColor="Black"
+                BackgroundColor="LightPink"
+                Grid.Row="0"
+                Grid.Column="0"
+                HorizontalOptions="End"
+            VerticalOptions="Start"
+                Clicked="MyPageClicked">
+        </Button>
+        <VerticalStackLayout>
+            <Grid
             RowDefinitions="40"
             ColumnDefinitions="40, 15, Auto, 15, 40"
             HorizontalOptions="Center">
-            <Label 
+                <Label 
             Text="{Binding Date}"
                 TextColor="LightPink"
                 FontSize="28"
             Grid.Row="0"
             Grid.Column="2">
-            </Label>
-            <Button
+                </Label>
+                <Button
                 Text=" - "
                 TextColor="Black"
                 BackgroundColor="LightPink"
             Grid.Row="0"
             Grid.Column="0"
             Command="{Binding SubtractDateClickedCommand}">
-            </Button>
-            <Button
+                </Button>
+                <Button
                 Text=" + "
                 TextColor="Black"
                 BackgroundColor="LightPink"
             Grid.Row="0"
             Grid.Column="4"
             Command="{Binding AddDateClickedCommand}">
-            </Button>
-        </Grid>
+                </Button>
+            </Grid>
+                
 
-        <CollectionView
+            <Button
+            Text="Frukost"
+                TextColor="Black"
+                HorizontalOptions="Center"
+            Clicked="OnBreakfastSelected">
+            </Button>
+            <Label
+            x:Name="Frukost"
+                Text="Inget valt recept, tryck på knappen för att generera ett random">
+            </Label>
+            <Button
+            Text="Lunch"
+                TextColor="Black"
+                HorizontalOptions="Center"
+            Clicked="OnLunchSelected">
+            </Button>
+            <Label
+            x:Name="Lunch"
+                Text="Inget valt recept, tryck på knappen för att generera ett random">
+            </Label>
+            <Button
+            Text="Middag"
+                TextColor="Black"
+                HorizontalOptions="Center"
+            Clicked="OnDinnerSelected">
+            </Button>
+            <Label
+            x:Name="Middag"
+                Text="Inget valt recept, tryck på knappen för att generera ett random">
+            </Label>
+
+            <!--<CollectionView
                 ItemsSource="{Binding Meals}">
             <CollectionView.ItemTemplate>
                 <DataTemplate
@@ -47,14 +90,17 @@
                         <Frame
                             Grid.Column="0"
                             Grid.Row="0">
-                            <Label
+                                <Label
                             Text="{Binding .}">
-                            </Label>
-                        </Frame>
+                                </Label>
+                            </Frame>
                         <Button
                             Grid.Column="0"
                             Grid.Row="1"
-                            Text="Recept ex"
+                            Text="Get Recipe"
+                            Command="{Binding Source={RelativeSource AncestorType=
+                            {x:Type viewmodel:StartPageViewModel}}, Path=GetRecipesFromDbCommand}"
+                            CommandParameter="{Binding .}"
                             TextColor="Black"
                             BackgroundColor="LightPink"
                             >
@@ -62,11 +108,12 @@
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-        </CollectionView>
+        </CollectionView>-->
 
-        <Label
+            <Label
             Text="{Binding RecipeTitle}">
-        </Label>
+            </Label>
 
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>

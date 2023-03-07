@@ -1,3 +1,5 @@
+using MongoDB.Driver;
+using RecipeApp.Connections;
 using RecipeApp.ViewModels;
 
 namespace RecipeApp.Models;
@@ -11,16 +13,33 @@ public partial class StartPage : ContentPage
         InitializeComponent();
         BindingContext = Vm;
     }
+    //protected override async void OnAppearing()
+    //{
+    //    base.OnAppearing();
+    //    if (!startPage)
+    //    {
+    //        //await Vm.GetRecipeFromSearch();
+    //        startPage = true;
+    //    }
+    //}
 
-    protected override async void OnAppearing()
+    public async void MyPageClicked(object sender, EventArgs e)
     {
-        base.OnAppearing();
-        if (!startPage)
-        {
-            await Vm.GetRecipeFromSearch();
-            //await Vm.GetRecipeCategories();
-            startPage = true;
-        }
+        // ny sida med my page för loggedinuser
+    }
 
+    private async void OnBreakfastSelected(object sender, EventArgs e)
+    {
+        await Vm.GetRecipeFromSearch("Frukost");
+    }
+
+    private async void OnLunchSelected(object sender, EventArgs e)
+    {
+        await Vm.GetRecipeFromSearch("Lunch");
+    }
+
+    private async void OnDinnerSelected(object sender, EventArgs e)
+    {
+        await Vm.GetRecipeFromSearch("Middag");
     }
 }
