@@ -22,7 +22,7 @@ namespace RecipeApp.Connections
             using (var response = await client.SendAsync(request))
             {
                 response.EnsureSuccessStatusCode();
-                var body = await response.Content.ReadAsStringAsync(); 
+                var body = await response.Content.ReadAsStringAsync(); // å ä och ö blir fucked redan i body, why? 
                 var recipe = JsonSerializer.Deserialize<Rootobject>(body); 
                 return recipe;
             }

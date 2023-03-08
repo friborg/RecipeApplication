@@ -43,50 +43,59 @@ namespace RecipeApp.ViewModels
         [RelayCommand]
         private void SubtractDateClicked()
         {
-            if (Date > DateOnly.FromDateTime(DateTime.Now)) // någonting buggar här (ibland???)
+            if (Date > DateOnly.FromDateTime(DateTime.Now))
             {
                 Date = Date.AddDays(-1);
-                //GetRecipesFromDb();
             }
         }
         [RelayCommand]
         private void AddDateClicked()
         {
             Date = Date.AddDays(1);
-            //GetRecipesFromDb();
         }
-
-        public void GetRecipesFromDb() 
+        [RelayCommand]
+        public void BreakfastSelected()
         {
-            List<DbRelation> relations = Databases.RelationsCollection().AsQueryable().ToList();
-            //productsFromDb.ForEach(x => Products.Add(x)); ???
-            foreach (DbRelation r in relations.Where(r => r.CurrentDate == Date)) // vi är nu inne i det datumet som syns på skärmen
-            {
-                // måste koppla med mealtitle 
-                // kolla vilken mealtitle receptet har, sen spara id:t för det när man klickar på det
-                // om det inte finns något recept sparat ska det inte skrivas ut någonting
-
-            }
+            GetRecipeFromSearch("Frukost");
         }
+        [RelayCommand]
+        public void LunchSelected()
+        {
+            GetRecipeFromSearch("Lunch");
+        }
+        [RelayCommand]
+        public void DinnerSelected()
+        {
+            GetRecipeFromSearch("Middag");
+        }
+
         public async Task GetRecipeFromSearch(string keyword)
         {
             Random random = new Random();
             string page = random.Next(1, 900).ToString();
 
             Recipe = await API.GetRndRecipeFromKeyword(keyword, page);
-            string id = Recipe.Recipes[0].Id.ToString();
-            string name = Recipe.Recipes[0].Title.ToString();
-
-            DbRelation relation = new DbRelation()
+            string name = "";
+            string id = "";
+            foreach (var item in Recipe.Recipes)
             {
-                LoggedInUsername = LoggedInUser.Username,
-                ChosenRecipeId = id,
-                ChosenMealTitle = keyword,
-                ChosenRecipeName = name,
-                CurrentDate = Date
-            };
-            Databases.RelationsCollection().DeleteOne(r => r.CurrentDate == Date && r.ChosenMealTitle == keyword);
-            Databases.RelationsCollection().InsertOne(relation);
+                id = item.Id.ToString();
+                name = item.Title.ToString();
+            }
+            if (id != "" && name != "")
+            {
+                DbRelation relation = new DbRelation()
+                {
+                    Id = Guid.NewGuid(),
+                    LoggedInUsername = LoggedInUser.Username,
+                    ChosenRecipeId = id,
+                    ChosenMealTitle = keyword,
+                    ChosenRecipeName = name,
+                    CurrentDate = Date
+                };
+                Databases.RelationsCollection().DeleteOne(r => r.CurrentDate == Date && r.ChosenMealTitle == keyword && loggedInUserName == LoggedInUser.Username); // denna fungerar, inga dubletter skapas
+                Databases.RelationsCollection().InsertOne(relation); // denna fungerar 
+            }
         }
     }
 }
