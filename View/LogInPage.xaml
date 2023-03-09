@@ -8,18 +8,13 @@
     
     <VerticalStackLayout>
         <Entry
-            Placeholder="Username"
             Text="{Binding UserNameInput}"
-            PlaceholderColor="WhiteSmoke"
             FontSize="Subtitle"
             TextColor="GhostWhite"
             HorizontalOptions="Start"
-            MaxLength="25"
-        />
-        <Entry
-            Placeholder="Password"
+            MaxLength="25" ></Entry>
+           <Entry
             Text="{Binding PasswordInput}"
-            PlaceholderColor="WhiteSmoke"
             FontSize="Subtitle"
             TextColor="GhostWhite"
             HorizontalOptions="Start"

@@ -52,90 +52,53 @@
             Text="Frukost"
                 TextColor="Black"
                 HorizontalOptions="Center"
-            Clicked="OnBreakfastSelected"
-                Command="{Binding BreakfastSelectedCommand}">
+                Command="{Binding BreakfastSelectedCommand}"
+            Clicked="GetMealFromDb">
             </Button>
             <Label
-            x:Name="Frukost"
+            x:Name="FrukostLabel"
                 Text="Inget valt recept, tryck på knappen för att generera ett random">
             </Label>
             <Button
-                Text="Se hela receptet"
+                Text="Frukost"
                 TextColor="Black"
                 HorizontalOptions="Center"
-                Clicked="ViewBreakfastRecipe">
+                Clicked="ViewSelectedtRecipe">
             </Button>
             <Button
             Text="Lunch"
                 TextColor="Black"
                 HorizontalOptions="Center"
-            Clicked="OnLunchSelected"
-                Command="{Binding LunchSelectedCommand}">
+                Command="{Binding LunchSelectedCommand}"
+            Clicked="GetMealFromDb">
             </Button>
             <Label
-            x:Name="Lunch"
+            x:Name="LunchLabel"
                 Text="Inget valt recept, tryck på knappen för att generera ett random">
             </Label>
             <Button
-                Text="Se hela receptet"
+                Text="Lunch"
                 TextColor="Black"
                 HorizontalOptions="Center"
-                Clicked="ViewLunchRecipe">
+                Clicked="ViewSelectedtRecipe">
             </Button>
             <Button
             Text="Middag"
                 TextColor="Black"
                 HorizontalOptions="Center"
-            Clicked="OnDinnerSelected"
-                Command="{Binding DinnerSelectedCommand}">
+                Command="{Binding DinnerSelectedCommand}"
+            Clicked="GetMealFromDb">
             </Button>
             <Label
-            x:Name="Middag"
+            x:Name="MiddagLabel"
                 Text="Inget valt recept, tryck på knappen för att generera ett random">
             </Label>
             <Button
-                Text="Se hela receptet"
+                Text="Middag"
                 TextColor="Black"
                 HorizontalOptions="Center"
-                Clicked="ViewDinnerRecipe">
+                Clicked="ViewSelectedtRecipe">
             </Button>
-
-            <!--<CollectionView
-                ItemsSource="{Binding Meals}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate
-                        x:DataType="{x:Type x:String}">
-                    <Grid
-                        RowDefinitions="60, 60, 20"
-                        ColumnDefinitions="120"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center">
-                        <Frame
-                            Grid.Column="0"
-                            Grid.Row="0">
-                                <Label
-                            Text="{Binding .}">
-                                </Label>
-                            </Frame>
-                        <Button
-                            Grid.Column="0"
-                            Grid.Row="1"
-                            Text="Get Recipe"
-                            Command="{Binding Source={RelativeSource AncestorType=
-                            {x:Type viewmodel:StartPageViewModel}}, Path=GetRecipesFromDbCommand}"
-                            CommandParameter="{Binding .}"
-                            TextColor="Black"
-                            BackgroundColor="LightPink"
-                            >
-                        </Button>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>-->
-
-            <Label
-            Text="{Binding RecipeTitle}">
-            </Label>
 
         </VerticalStackLayout>
     </Grid>

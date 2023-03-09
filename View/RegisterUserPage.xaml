@@ -6,7 +6,6 @@
              x:DataType="viewmodel:RegisterUserPageViewModel"
              Title="Register New User">
     <VerticalStackLayout>
-        <!--Gör ett grid här så kan du göra layouten snyggare med spacing etc-->
         <Entry
             Placeholder="Username"
             Text="{Binding UserNameInput}"
@@ -15,7 +14,6 @@
             TextColor="GhostWhite"
             HorizontalOptions="Start"
             />
-
         <Entry
             Placeholder="Password"
             Text="{Binding PasswordInput}"
@@ -24,112 +22,14 @@
             TextColor="GhostWhite"
             HorizontalOptions="Start"
             />
-        <Entry
-            Placeholder="Amount of people in your household"
-            Text="{Binding PeopleInHouseholdInput}"
-            PlaceholderColor="WhiteSmoke"
-            FontSize="Subtitle"
-            TextColor="GhostWhite"
-            HorizontalOptions="Start"
-            />
-
-        <Label
-            Text="Allergies"
-            FontSize="Title"
-            TextColor="LavenderBlush"
-            HorizontalOptions="StartAndExpand">
-        </Label>
-        <CollectionView
-            ItemsSource="{Binding Allergies}"
-            VerticalOptions="Center"
-            HorizontalOptions="Start">
-            <CollectionView.ItemTemplate>
-                <DataTemplate
-                    x:DataType="{x:Type x:String}">
-                    <Grid
-                        RowDefinitions="Auto"
-                        ColumnDefinitions="200, 75, 85">
-                        <Frame
-                            Grid.Column="0">
-                            <Label
-                            Text="{Binding .}">
-                            </Label>
-                        </Frame>
-                        <Button
-                            Grid.Column="1"
-                            Text="Add"
-                            TextColor="Black"
-                            Command="{Binding Source={RelativeSource 
-                            AncestorType={x:Type viewmodel:RegisterUserPageViewModel}},
-                            Path=AddAllergyCommand}"
-                            CommandParameter="{Binding .}">
-                        </Button>
-                        <Button
-                            Grid.Column="2"
-                            Text="Remove"
-                            TextColor="Black"
-                            Command="{Binding Source={RelativeSource 
-                            AncestorType={x:Type viewmodel:RegisterUserPageViewModel}},
-                            Path=RemoveAllergyCommand}"
-                            CommandParameter="{Binding .}">
-                        </Button>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
-        <Label
-            Text="Dietary Restrictions"
-            FontSize="Title"
-            TextColor="LavenderBlush"
-            HorizontalOptions="Start">
-        </Label>
-        <CollectionView
-            ItemsSource="{Binding DietRestrictions}"
-            HorizontalOptions="Start"
-            VerticalOptions="Center">
-            <CollectionView.ItemTemplate>
-                <DataTemplate
-                    x:DataType="{x:Type x:String}">
-                    <Grid
-                        RowDefinitions="Auto"
-                        ColumnDefinitions="200, 75, 85">
-                        <Frame
-                            Grid.Column="0">
-                            <Label
-                            Text="{Binding .}">
-                            </Label>
-                        </Frame>
-                        <Button
-                            Grid.Column="1"
-                            Text="Add"
-                            TextColor="Black"
-                            Command="{Binding Source={RelativeSource 
-                            AncestorType={x:Type viewmodel:RegisterUserPageViewModel}},
-                            Path=AddDietRestrCommand}"
-                            CommandParameter="{Binding .}">
-                        </Button>
-                        <Button
-                            Grid.Column="2"
-                            Text="Remove"
-                            TextColor="Black"
-                            Command="{Binding Source={RelativeSource 
-                            AncestorType={x:Type viewmodel:RegisterUserPageViewModel}},
-                            Path=RemoveDietRestrCommand}"
-                            CommandParameter="{Binding .}">
-                        </Button>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <Label
-            Text="{Binding ItemStatusText}"
-            FontSize="20">
-        </Label>
         <Button
             Text="Register User"
             HorizontalOptions="Center"
-            Command="{Binding CreateNewUserCommand}">
+            Clicked="OnRegisterClicked">
         </Button>
+        <Label
+            x:Name="StatusText"
+            Text="{Binding Status}">
+        </Label>
     </VerticalStackLayout>
 </ContentPage>

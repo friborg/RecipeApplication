@@ -2,6 +2,7 @@ using MongoDB.Driver;
 using RecipeApp.Connections;
 using RecipeApp.View;
 using RecipeApp.ViewModels;
+using System;
 
 namespace RecipeApp.Models;
 
@@ -16,61 +17,47 @@ public partial class StartPage : ContentPage
     }
     protected override async void OnAppearing()
     {
+        object sender = null;
+        EventArgs args = new EventArgs();
+
         base.OnAppearing();
         if (!startPage)
         {
-            // GetMealFromDb(); fungerar inte här
+            GetMealFromDb(sender, args);
             startPage = true;
         }
     }
-    public void GetMealFromDb(object sender, EventArgs e)
+    public async void GetMealFromDb(object sender, EventArgs e) 
     {
+        string placeholder = "Inget valt recept, tryck på knappen för att generera ett random";
+        FrukostLabel.Text = placeholder;
+        LunchLabel.Text = placeholder;
+        MiddagLabel.Text = placeholder;
+
         List<DbRelation> relation = Databases.RelationsCollection().AsQueryable().ToList();
 
         foreach (DbRelation item in relation.Where(r => r.CurrentDate == Vm.Date && r.LoggedInUsername == LoggedInUser.Username))
         {
             if (item.ChosenMealTitle == "Frukost")
             {
-                Frukost.Text = item.ChosenRecipeName;
+                FrukostLabel.Text = item.ChosenRecipeName;
             }
             else if (item.ChosenMealTitle == "Lunch")
             {
-                Lunch.Text = item.ChosenRecipeName;
+                LunchLabel.Text = item.ChosenRecipeName;
             }
             else if (item.ChosenMealTitle == "Middag")
             {
-                Middag.Text = item.ChosenRecipeName;
+                MiddagLabel.Text = item.ChosenRecipeName;
             }
         }
     }
-    public async void ViewBreakfastRecipe(object sender, EventArgs e)
+    public async void ViewSelectedtRecipe(object sender, EventArgs e)
     {
+        Button btn = sender as Button;
+        string mealTitle = btn.Text;
         List<DbRelation> relations = Databases.RelationsCollection().AsQueryable().ToList();
-        foreach (var r in relations.Where(r => r.CurrentDate == Vm.Date && r.LoggedInUsername == LoggedInUser.Username && r.ChosenMealTitle == "Frukost"))
-        {
-            RecipeId.CurrentRecipeId = r.ChosenRecipeId;
-        }
-        if (RecipeId.CurrentRecipeId != null)
-        {
-            await Navigation.PushAsync(new RecipePage());
-        }
-    }
-    public async void ViewLunchRecipe(object sender, EventArgs e)
-    {
-        List<DbRelation> relations = Databases.RelationsCollection().AsQueryable().ToList();
-        foreach (var r in relations.Where(r => r.CurrentDate == Vm.Date && r.LoggedInUsername == LoggedInUser.Username && r.ChosenMealTitle == "Lunch"))
-        {
-            RecipeId.CurrentRecipeId = r.ChosenRecipeId;
-        }
-        if (RecipeId.CurrentRecipeId != null)
-        {
-            await Navigation.PushAsync(new RecipePage());
-        }
-    }
-    public async void ViewDinnerRecipe(object sender, EventArgs e)
-    {
-        List<DbRelation> relations = Databases.RelationsCollection().AsQueryable().ToList();
-        foreach (var r in relations.Where(r => r.CurrentDate == Vm.Date && r.LoggedInUsername == LoggedInUser.Username && r.ChosenMealTitle == "Middag"))
+        foreach (var r in relations.Where(r => r.CurrentDate == Vm.Date && r.LoggedInUsername == LoggedInUser.Username && r.ChosenMealTitle == mealTitle))
         {
             RecipeId.CurrentRecipeId = r.ChosenRecipeId;
         }
@@ -81,21 +68,6 @@ public partial class StartPage : ContentPage
     }
     public async void MyPageClicked(object sender, EventArgs e)
     {
-        // ny sida med my page för loggedinuser
-    }
-
-    private void OnBreakfastSelected(object sender, EventArgs e)
-    {
-        GetMealFromDb(sender, e);
-    }
-
-    private void OnLunchSelected(object sender, EventArgs e)
-    {
-        GetMealFromDb(sender, e);
-    }
-
-    private void OnDinnerSelected(object sender, EventArgs e)
-    {
-        GetMealFromDb(sender, e);
+        await Navigation.PushAsync(new MyPage());
     }
 }

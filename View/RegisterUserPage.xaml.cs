@@ -13,4 +13,15 @@ public partial class RegisterUserPage : ContentPage
         BindingContext = Vm;
     }
 
+    private async void OnRegisterClicked(object sender, EventArgs e)
+    {
+        Vm.CreateNewUser();
+
+        if (StatusText.Text == "Registrering lyckades!")
+        {
+            await Task.Delay(2000);
+            await Navigation.PushAsync(new LogInPage());
+        }
+
+    }
 }

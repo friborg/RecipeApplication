@@ -24,7 +24,7 @@ namespace RecipeApp.ViewModels
 
         public async Task GiveRecipeValues()
         {
-            Connections.Rootobject recipe = await Connections.API.GetRecipes(Models.RecipeId.CurrentRecipeId);
+            Connections.Rootobject recipe = await Connections.API.GetRecipeFromId(Models.RecipeId.CurrentRecipeId);
             Title = recipe.Title;
 
             List<string> items = new List<string>();

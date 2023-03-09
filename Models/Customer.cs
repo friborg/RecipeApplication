@@ -16,8 +16,5 @@ namespace RecipeApp.Models
         public Guid Id { get; set; }
         public string UserName { get; set; } 
         public string Password { get; set; }
-        public int PeopeInHousehold { get; set; }
-        public ObservableCollection<string> Allergies { get; set; }
-        public ObservableCollection<string> DietRestrictions { get; set; }
     }
 }
