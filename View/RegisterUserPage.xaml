@@ -4,32 +4,38 @@
              x:Class="RecipeApp.Models.RegisterUserPage"
              xmlns:viewmodel="clr-namespace:RecipeApp.ViewModels"
              x:DataType="viewmodel:RegisterUserPageViewModel"
-             Title="Register New User">
+             BackgroundColor="WhiteSmoke">
     <VerticalStackLayout>
         <Entry
             Placeholder="Username"
+            PlaceholderColor="SlateGray"
             Text="{Binding UserNameInput}"
-            PlaceholderColor="WhiteSmoke"
+            TextColor="Black"
             FontSize="Subtitle"
-            TextColor="GhostWhite"
             HorizontalOptions="Start"
             />
         <Entry
             Placeholder="Password"
+            PlaceholderColor="SlateGray"
             Text="{Binding PasswordInput}"
-            PlaceholderColor="WhiteSmoke"
+            TextColor="Black"
             FontSize="Subtitle"
-            TextColor="GhostWhite"
             HorizontalOptions="Start"
             />
         <Button
             Text="Register User"
+            TextColor="Teal"
+            BorderColor="Teal"
+            BorderWidth="2"
+            FontSize="20"
+            FontFamily="Recoleta"
             HorizontalOptions="Center"
             Clicked="OnRegisterClicked">
         </Button>
         <Label
             x:Name="StatusText"
-            Text="{Binding Status}">
+            Text="{Binding Status}"
+            TextColor="Teal">
         </Label>
     </VerticalStackLayout>
 </ContentPage>

@@ -4,33 +4,48 @@
              x:Class="RecipeApp.View.MyPage"
              xmlns:viewmodel="clr-namespace:RecipeApp.ViewModels"
              x:DataType="viewmodel:MyPageViewModel"
-             Title="My Page">
+             BackgroundColor="WhiteSmoke">
     <VerticalStackLayout>
 
         <Label
-                Text="Change your password">
+                Text="Ändra ditt lösenord"
+            TextColor="Teal"
+            FontSize="20">
         </Label>
         <Entry
-                Placeholder="Enter old password"
-                Text="{Binding OldPassword}">
+                Placeholder="Ange det gamla lösenordet"
+                Text="{Binding OldPassword}"
+            BackgroundColor="White">
         </Entry>
         <Entry
-                Placeholder="Enter new password"
-                Text="{Binding NewPassword}">
+                Placeholder="Ange det nya lösenordet"
+                Text="{Binding NewPassword}"
+                BackgroundColor="White">
         </Entry>
         <Button
             Command="{Binding ChangePasswordCommand}"
-            TextColor="Black"
-                BackgroundColor="LightPink"
-            Text="Byt lösenord">
+            TextColor="Teal"
+                BackgroundColor="WhiteSmoke"
+            BorderColor="Teal"
+            BorderWidth="2"
+            Text="Byt lösenord"
+            HorizontalOptions="Center">
         </Button>
         <Label
                 Text="{Binding Status}">
         </Label>
+        <Label
+            Text="Dina favoriter"
+            TextColor="Teal"
+            FontSize="20">
+        </Label>
         <Button
-                Text="View saved recipes"
-                TextColor="Black"
-                BackgroundColor="LightPink">
+                Text="Se sparade recept"
+                TextColor="Teal"
+                BackgroundColor="WhiteSmoke"
+            BorderColor="Teal"
+            BorderWidth="2"
+            HorizontalOptions="Center">
         </Button>
     </VerticalStackLayout>
 </ContentPage>

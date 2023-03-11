@@ -1,35 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RecipeApp.MainPage">
+             x:Class="RecipeApp.MainPage"
+             BackgroundColor="WhiteSmoke"
+             Title="">
 
     <ScrollView>
         <VerticalStackLayout>
+            <Image
+                Source="logo3.png"
+                HeightRequest="100"
+                WidthRequest="100"
+                HorizontalOptions="Center">
+            </Image>
             <Label
-                Text="Welcome to 'Whats for Dinner?'"
+                Text="What's for dinner?"
                 HorizontalOptions="Center"
-                FontSize="30"
-                TextColor="White"
+                FontSize="35"
+                FontFamily="Recoleta"
+                TextColor="Teal"
                 />
+            <Label
+                Text="Mealplanning made easy"
+                HorizontalOptions="Center"
+                FontSize="15"
+                FontAttributes="Italic"
+                TextColor="SlateGray"
+                >
+            </Label>
+            
             <Grid
                 RowDefinitions="65, 65"
-                ColumnDefinitions="120, 300"
+                ColumnDefinitions="150, 150"
                 Padding="120"
-                VerticalOptions="End"
                 HorizontalOptions="Center">
                 <Button
             Text="Log in"
-                    TextColor="Black"
+                    TextColor="Teal"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="Teal"
+                    BorderWidth="2"
             FontSize="Subtitle"
+                    FontFamily="Recoleta"
             Clicked="LogInUser"
             HorizontalOptions="Center"
             Grid.Column="0"
             Grid.Row="0"
             />
                 <Button
-            Text="Register new user"
-                    TextColor="Black"
+            Text="Register"
+            TextColor="Teal"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="Teal"
+                    BorderWidth="2"
             FontSize="Subtitle"
+                    FontFamily="Recoleta"
             HorizontalOptions="Center"
             Clicked="RegisterUser"
             Grid.Column="1"

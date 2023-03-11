@@ -17,6 +17,7 @@ public partial class LogInPage : ContentPage
         bool successLogin = await LogInPageViewModel.TryLogInAsync();
         if (successLogin)
         {
+            await Task.Delay(1000);
             await Navigation.PushAsync(new StartPage());
         }
     }

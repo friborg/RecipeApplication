@@ -27,7 +27,7 @@ public partial class StartPage : ContentPage
             startPage = true;
         }
     }
-    public async void GetMealFromDb(object sender, EventArgs e) 
+    public async void GetMealFromDb(object sender, EventArgs e) // kör denna före den hämtar ett nytt recept.
     {
         string placeholder = "Inget valt recept, tryck på knappen för att generera ett random";
         FrukostLabel.Text = placeholder;
@@ -56,6 +56,7 @@ public partial class StartPage : ContentPage
     {
         Button btn = sender as Button;
         string mealTitle = btn.Text;
+        // döp om text till title : se hela receptet och sen kör en replace på string mealTitle och ta bort : se hela receptet
         List<DbRelation> relations = Databases.RelationsCollection().AsQueryable().ToList();
         foreach (var r in relations.Where(r => r.CurrentDate == Vm.Date && r.LoggedInUsername == LoggedInUser.Username && r.ChosenMealTitle == mealTitle))
         {

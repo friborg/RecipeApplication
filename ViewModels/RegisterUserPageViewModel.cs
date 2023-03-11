@@ -23,25 +23,31 @@ namespace RecipeApp.ViewModels
 
         public async void CreateNewUser()
         {
+            bool registerSuccess = true; // om listan skulle vara tom, och den hoppar över foreachen, så skapar den fortfarande en användare
             List<Customer> customerList = Databases.CustomerCollection().AsQueryable().ToList();
             foreach (var c in customerList)
             {
                 if (c.UserName == UserNameInput)
                 {
                     Status = "Detta användarnamn används redan, vänligen försök igen.";
+                    registerSuccess = false;
                     break;
                 }
                 else
                 {
-                    Customer customer = new Customer()
-                    {
-                        Id = Guid.NewGuid(),
-                        UserName = UserNameInput,
-                        Password = PasswordInput,
-                    };
-                    await Databases.CustomerCollection().InsertOneAsync(customer);
-                    Status = "Registrering lyckades!";
+                    registerSuccess = true;
                 }
+            }
+            if (registerSuccess && UserNameInput != "" && PasswordInput != "")
+            {
+                Customer customer = new Customer()
+                {
+                    Id = Guid.NewGuid(),
+                    UserName = UserNameInput,
+                    Password = PasswordInput,
+                };
+                await Databases.CustomerCollection().InsertOneAsync(customer);
+                Status = "Registrering lyckades!";
             }
         }
     }

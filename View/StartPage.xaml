@@ -3,12 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RecipeApp.Models.StartPage"
              xmlns:viewmodel="clr-namespace:RecipeApp.ViewModels"
-             x:DataType="viewmodel:StartPageViewModel">
+             x:DataType="viewmodel:StartPageViewModel"
+             BackgroundColor="WhiteSmoke">
     <Grid>
         <Button
                 Text="{Binding LoggedInUserName}"
-                TextColor="Black"
-                BackgroundColor="LightPink"
+                TextColor="Teal"
+            FontFamily="Recoleta"
+            FontSize="15"
+                BackgroundColor="WhiteSmoke"
+            BorderColor="Teal"
+            BorderWidth="2"
                 Grid.Row="0"
                 Grid.Column="0"
                 HorizontalOptions="End"
@@ -22,15 +27,17 @@
             HorizontalOptions="Center">
                 <Label 
             Text="{Binding Date}"
-                TextColor="LightPink"
+                TextColor="Teal"
                 FontSize="28"
             Grid.Row="0"
             Grid.Column="2">
                 </Label>
                 <Button
                 Text=" - "
-                TextColor="Black"
-                BackgroundColor="LightPink"
+                TextColor="Teal"
+                BackgroundColor="WhiteSmoke"
+            BorderColor="Teal"
+            BorderWidth="2"
             Grid.Row="0"
             Grid.Column="0"
             Command="{Binding SubtractDateClickedCommand}"
@@ -38,64 +45,86 @@
                 </Button>
                 <Button
                 Text=" + "
-                TextColor="Black"
-                BackgroundColor="LightPink"
+                TextColor="Teal"
+                BackgroundColor="WhiteSmoke"
+            BorderColor="Teal"
+            BorderWidth="2"
             Grid.Row="0"
             Grid.Column="4"
             Command="{Binding AddDateClickedCommand}"
                     Clicked="GetMealFromDb">
                 </Button>
             </Grid>
-                
-
+            
             <Button
-            Text="Frukost"
-                TextColor="Black"
+            Text="Få recept frukost"
+                TextColor="Teal"
+                BackgroundColor="WhiteSmoke"
+            BorderColor="Teal"
+            BorderWidth="2"
                 HorizontalOptions="Center"
                 Command="{Binding BreakfastSelectedCommand}"
             Clicked="GetMealFromDb">
             </Button>
             <Label
             x:Name="FrukostLabel"
-                Text="Inget valt recept, tryck på knappen för att generera ett random">
+                Text="Inget valt recept, tryck på knappen för att generera ett random"
+                TextColor="Black">
             </Label>
             <Button
                 Text="Frukost"
-                TextColor="Black"
+                TextColor="Teal"
+                BackgroundColor="WhiteSmoke"
+            BorderColor="Teal"
+            BorderWidth="2"
                 HorizontalOptions="Center"
                 Clicked="ViewSelectedtRecipe">
             </Button>
             <Button
-            Text="Lunch"
-                TextColor="Black"
+            Text="Få recept lunch"
+                TextColor="Teal"
+                BackgroundColor="WhiteSmoke"
+            BorderColor="Teal"
+            BorderWidth="2"
                 HorizontalOptions="Center"
                 Command="{Binding LunchSelectedCommand}"
             Clicked="GetMealFromDb">
             </Button>
             <Label
             x:Name="LunchLabel"
-                Text="Inget valt recept, tryck på knappen för att generera ett random">
+                Text="Inget valt recept, tryck på knappen för att generera ett random"
+                TextColor="Black">
             </Label>
             <Button
                 Text="Lunch"
-                TextColor="Black"
+                TextColor="Teal"
+                BackgroundColor="WhiteSmoke"
+            BorderColor="Teal"
+            BorderWidth="2"
                 HorizontalOptions="Center"
                 Clicked="ViewSelectedtRecipe">
             </Button>
             <Button
-            Text="Middag"
-                TextColor="Black"
+            Text="Få recept middag"
+                TextColor="Teal"
+                BackgroundColor="WhiteSmoke"
+            BorderColor="Teal"
+            BorderWidth="2"
                 HorizontalOptions="Center"
                 Command="{Binding DinnerSelectedCommand}"
             Clicked="GetMealFromDb">
             </Button>
             <Label
             x:Name="MiddagLabel"
-                Text="Inget valt recept, tryck på knappen för att generera ett random">
+                Text="Inget valt recept, tryck på knappen för att generera ett random"
+                TextColor="Black">
             </Label>
             <Button
                 Text="Middag"
-                TextColor="Black"
+                TextColor="Teal"
+                BackgroundColor="WhiteSmoke"
+            BorderColor="Teal"
+            BorderWidth="2"
                 HorizontalOptions="Center"
                 Clicked="ViewSelectedtRecipe">
             </Button>

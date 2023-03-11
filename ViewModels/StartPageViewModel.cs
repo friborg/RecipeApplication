@@ -56,7 +56,8 @@ namespace RecipeApp.ViewModels
         [RelayCommand]
         public async void BreakfastSelected()
         {
-           await GetRecipeFromSearch("Frukost");
+            await GetRecipeFromSearch("Frukost");
+            //om du kan uppdatera receptvyn här på något sätt?? 
         }
         [RelayCommand]
         public async void LunchSelected()
@@ -97,8 +98,8 @@ namespace RecipeApp.ViewModels
                         ChosenRecipeName = name,
                         CurrentDate = Date
                     };
-                    Databases.RelationsCollection().DeleteOne(r => r.CurrentDate == Date && r.ChosenMealTitle == keyword && LoggedInUserName == LoggedInUser.Username); 
-                    Databases.RelationsCollection().InsertOne(relation); 
+                    Databases.RelationsCollection().DeleteOne(r => r.CurrentDate == Date && r.ChosenMealTitle == keyword && LoggedInUserName == LoggedInUser.Username);
+                    Databases.RelationsCollection().InsertOne(relation);
                     getRecipe = true;
                 }
             }

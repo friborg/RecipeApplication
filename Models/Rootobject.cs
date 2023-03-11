@@ -10,11 +10,6 @@ using System.Threading.Tasks;
 
 namespace RecipeApp.Connections
 {
-    //public class Rootobject 
-    //{
-    //    public RecipeRootObject[] Recipes { get; set; }
-    //}
-
     public class Rootobject
     {
         public int Id { get; set; }
@@ -33,7 +28,7 @@ namespace RecipeApp.Connections
         public int Portions { get; set; }
         public string PortionsDescription { get; set; }
         public object[] Categories { get; set; }
-        public string[] MdsaCategories { get; set; } // här kan du använda contains, typ alla ingredienser och nyckelord finns här, ex middag, vardag, äggfri, huvudrätt
+        public string[] MdsaCategories { get; set; } 
         public int OfferCount { get; set; }
     }
 
