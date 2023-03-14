@@ -7,35 +7,38 @@
              BackgroundColor="WhiteSmoke">
     <VerticalStackLayout>
         <Entry
-            Placeholder="Username"
+            Placeholder="Användarnamn"
             PlaceholderColor="SlateGray"
             Text="{Binding UserNameInput}"
             TextColor="Black"
             FontSize="Subtitle"
+            FontFamily="Chocolates"          
             HorizontalOptions="Start"
             />
         <Entry
-            Placeholder="Password"
+            Placeholder="Lösenord"
             PlaceholderColor="SlateGray"
             Text="{Binding PasswordInput}"
             TextColor="Black"
             FontSize="Subtitle"
+            FontFamily="Chocolates" 
             HorizontalOptions="Start"
             />
         <Button
-            Text="Register User"
+            Text="Registrera användare"
             TextColor="Teal"
             BorderColor="Teal"
             BorderWidth="2"
             FontSize="20"
-            FontFamily="Recoleta"
+            FontFamily="Chocolates"
             HorizontalOptions="Center"
             Clicked="OnRegisterClicked">
         </Button>
         <Label
             x:Name="StatusText"
             Text="{Binding Status}"
-            TextColor="Teal">
+            TextColor="Teal"
+            FontFamily="Chocolates" >
         </Label>
     </VerticalStackLayout>
 </ContentPage>

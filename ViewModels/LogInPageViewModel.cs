@@ -14,8 +14,10 @@ using System.Threading.Tasks;
 
 namespace RecipeApp.ViewModels
 {
-    internal partial class LogInPageViewModel : ObservableObject 
+    internal partial class LogInPageViewModel : ObservableObject
     {
+        Interface.ILoginFacade _loginFacade = new LoginFacade();
+
         [ObservableProperty]
         string userNameInput;
         [ObservableProperty]
@@ -25,33 +27,24 @@ namespace RecipeApp.ViewModels
 
         public LogInPageViewModel()
         {
-           
+
         }
         [RelayCommand]
-        public async Task<bool> TryLogInAsync()
+        public Task<bool> TryLogIn()
         {
-            List<Customer> customerList = await GetUsersFromDb();
-            bool succesfulLogin = false;
-            foreach (var c in customerList)
+            // här använder jag Facade för att kolla om användaren finns, och att lösenord och användarnamn stämmer
+            // 
+            if (_loginFacade.LoginSuccess(UserNameInput, PasswordInput))
             {
-                if (c.UserName == UserNameInput && c.Password == PasswordInput)
-                {
-                    LogInStatus = "Login successful!";
-                    LoggedInUser.Username = UserNameInput;
-                    succesfulLogin = true;
-                    break;
-                }
-                else
-                {
-                    LogInStatus = "Wrong username or password, please try again";
-                }
+                LogInStatus = "Login successful!";
+                LoggedInUser.Username = UserNameInput;
+                return Task.FromResult(true);
             }
-            return succesfulLogin;
-        }
-        public async Task<List<Customer>> GetUsersFromDb()
-        {
-            List<Customer> usersFromDb = await Databases.CustomerCollection().AsQueryable().ToListAsync();
-            return usersFromDb;
+            else
+            {
+                LogInStatus = "Wrong username or password, please try again";
+                return Task.FromResult(false);
+            }
         }
     }
 }

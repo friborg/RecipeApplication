@@ -4,7 +4,6 @@
              x:Class="RecipeApp.MainPage"
              BackgroundColor="WhiteSmoke"
              Title="">
-
     <ScrollView>
         <VerticalStackLayout>
             <Image
@@ -17,7 +16,7 @@
                 Text="What's for dinner?"
                 HorizontalOptions="Center"
                 FontSize="35"
-                FontFamily="Recoleta"
+                FontFamily="Chocolates"
                 TextColor="Teal"
                 />
             <Label
@@ -28,33 +27,33 @@
                 TextColor="SlateGray"
                 >
             </Label>
-            
+
             <Grid
                 RowDefinitions="65, 65"
                 ColumnDefinitions="150, 150"
                 Padding="120"
                 HorizontalOptions="Center">
                 <Button
-            Text="Log in"
+            Text="Logga in"
                     TextColor="Teal"
                     BackgroundColor="WhiteSmoke"
                     BorderColor="Teal"
                     BorderWidth="2"
             FontSize="Subtitle"
-                    FontFamily="Recoleta"
+                    FontFamily="Chocolates"
             Clicked="LogInUser"
             HorizontalOptions="Center"
             Grid.Column="0"
             Grid.Row="0"
             />
                 <Button
-            Text="Register"
+            Text="Ny användare"
             TextColor="Teal"
                     BackgroundColor="WhiteSmoke"
                     BorderColor="Teal"
                     BorderWidth="2"
             FontSize="Subtitle"
-                    FontFamily="Recoleta"
+                    FontFamily="Chocolates"
             HorizontalOptions="Center"
             Clicked="RegisterUser"
             Grid.Column="1"

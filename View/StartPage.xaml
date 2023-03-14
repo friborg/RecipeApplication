@@ -9,7 +9,7 @@
         <Button
                 Text="{Binding LoggedInUserName}"
                 TextColor="Teal"
-            FontFamily="Recoleta"
+            FontFamily="Chocolates" 
             FontSize="15"
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"
@@ -27,8 +27,9 @@
             HorizontalOptions="Center">
                 <Label 
             Text="{Binding Date}"
-                TextColor="Teal"
-                FontSize="28"
+                    TextColor="Teal"
+                    FontSize="28"
+                    FontFamily="Chocolates" 
             Grid.Row="0"
             Grid.Column="2">
                 </Label>
@@ -55,24 +56,30 @@
                     Clicked="GetMealFromDb">
                 </Button>
             </Grid>
-            
+
             <Button
-            Text="Få recept frukost"
+            Text="Slumpa ett frukost-recept"
+                FontFamily="Chocolates" 
+                FontSize="15"
                 TextColor="Teal"
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"
             BorderWidth="2"
                 HorizontalOptions="Center"
-                Command="{Binding BreakfastSelectedCommand}"
             Clicked="GetMealFromDb">
             </Button>
             <Label
             x:Name="FrukostLabel"
                 Text="Inget valt recept, tryck på knappen för att generera ett random"
+                FontFamily="Chocolates" 
+                FontSize="15"
                 TextColor="Black">
             </Label>
             <Button
-                Text="Frukost"
+                x:Name="FrukostBtn"
+                Text="Frukost: se hela receptet"
+                FontFamily="Chocolates" 
+                FontSize="15"
                 TextColor="Teal"
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"
@@ -81,22 +88,28 @@
                 Clicked="ViewSelectedtRecipe">
             </Button>
             <Button
-            Text="Få recept lunch"
+            Text="Slumpa ett lunch-recept"
+                FontFamily="Chocolates" 
+                FontSize="15"
                 TextColor="Teal"
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"
             BorderWidth="2"
                 HorizontalOptions="Center"
-                Command="{Binding LunchSelectedCommand}"
             Clicked="GetMealFromDb">
             </Button>
             <Label
             x:Name="LunchLabel"
+                FontFamily="Chocolates" 
+                FontSize="15"
                 Text="Inget valt recept, tryck på knappen för att generera ett random"
                 TextColor="Black">
             </Label>
             <Button
-                Text="Lunch"
+                x:Name="LunchBtn"
+                FontFamily="Chocolates" 
+                FontSize="15"
+                Text="Lunch: se hela receptet"
                 TextColor="Teal"
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"
@@ -105,22 +118,28 @@
                 Clicked="ViewSelectedtRecipe">
             </Button>
             <Button
-            Text="Få recept middag"
+            Text="Slumpa ett middags-recept"
+                FontFamily="Chocolates" 
+                FontSize="15"
                 TextColor="Teal"
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"
             BorderWidth="2"
                 HorizontalOptions="Center"
-                Command="{Binding DinnerSelectedCommand}"
             Clicked="GetMealFromDb">
             </Button>
             <Label
             x:Name="MiddagLabel"
+                FontFamily="Chocolates" 
+                FontSize="15"
                 Text="Inget valt recept, tryck på knappen för att generera ett random"
                 TextColor="Black">
             </Label>
             <Button
-                Text="Middag"
+                x:Name="MiddagBtn"
+                FontFamily="Chocolates" 
+                FontSize="15"
+                Text="Middag: se hela receptet"
                 TextColor="Teal"
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"

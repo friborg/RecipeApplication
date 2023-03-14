@@ -18,7 +18,7 @@ namespace RecipeApp.ViewModels
         DateOnly date;
 
         [ObservableProperty]
-        Models.RecipeFromSearch recipe;
+        RecipeFromSearch recipe;
 
         [ObservableProperty]
         string recipeTitle;
@@ -35,7 +35,7 @@ namespace RecipeApp.ViewModels
         {
             Date = DateOnly.FromDateTime(DateTime.Now);
             LoggedInUserName = LoggedInUser.Username;
-            Recipe = new Models.RecipeFromSearch();
+            Recipe = new RecipeFromSearch();
             Meals = new ObservableCollection<string>()
             {"Frukost", "Lunch", "Middag"};
         }
@@ -52,22 +52,6 @@ namespace RecipeApp.ViewModels
         private void AddDateClicked()
         {
             Date = Date.AddDays(1);
-        }
-        [RelayCommand]
-        public async void BreakfastSelected()
-        {
-            await GetRecipeFromSearch("Frukost");
-            //om du kan uppdatera receptvyn här på något sätt?? 
-        }
-        [RelayCommand]
-        public async void LunchSelected()
-        {
-            await GetRecipeFromSearch("Lunch");
-        }
-        [RelayCommand]
-        public async void DinnerSelected()
-        {
-            await GetRecipeFromSearch("Middag");
         }
 
         public async Task GetRecipeFromSearch(string keyword)

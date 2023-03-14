@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipeApp.ViewModels
+namespace RecipeApp.Interface
 {
-    public class Allergy
+    internal interface IAuthentication
     {
-        public string Name { get; set; }
+        bool IsAuthenticated(string username, string password);
     }
 }

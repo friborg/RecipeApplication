@@ -9,16 +9,21 @@
 
         <Label
                 Text="Ändra ditt lösenord"
+            FontFamily="Chocolates"
             TextColor="Teal"
-            FontSize="20">
+            FontSize="22">
         </Label>
         <Entry
                 Placeholder="Ange det gamla lösenordet"
+                FontFamily="Chocolates"
+                FontSize="15"
                 Text="{Binding OldPassword}"
             BackgroundColor="White">
         </Entry>
         <Entry
                 Placeholder="Ange det nya lösenordet"
+                FontFamily="Chocolates"
+                FontSize="15"
                 Text="{Binding NewPassword}"
                 BackgroundColor="White">
         </Entry>
@@ -29,15 +34,20 @@
             BorderColor="Teal"
             BorderWidth="2"
             Text="Byt lösenord"
+            FontFamily="Chocolates"
+            FontSize="18"
             HorizontalOptions="Center">
         </Button>
         <Label
-                Text="{Binding Status}">
+                Text="{Binding Status}"
+            FontFamily="Chocolates"
+            FontSize="15">
         </Label>
         <Label
             Text="Dina favoriter"
             TextColor="Teal"
-            FontSize="20">
+            FontFamily="Chocolates"
+            FontSize="22">
         </Label>
         <Button
                 Text="Se sparade recept"
@@ -45,7 +55,20 @@
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"
             BorderWidth="2"
-            HorizontalOptions="Center">
+            HorizontalOptions="Center"
+            FontFamily="Chocolates">
+        </Button>
+        <Button
+            Text="Logga ut"
+                TextColor="Teal"
+                BackgroundColor="WhiteSmoke"
+            BorderColor="Teal"
+            BorderWidth="2"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            FontFamily="Chocolates"
+            FontSize="20"
+            Clicked="LogOutUserClicked">
         </Button>
     </VerticalStackLayout>
 </ContentPage>

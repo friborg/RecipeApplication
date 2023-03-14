@@ -1,3 +1,4 @@
+using RecipeApp.Models;
 using RecipeApp.ViewModels;
 
 namespace RecipeApp.View;
@@ -20,4 +21,11 @@ public partial class MyPage : ContentPage
 			startPage = true;
 		}
 	}
+
+    private async void LogOutUserClicked(object sender, EventArgs e)
+    {
+		LoggedInUser.Username = null;
+		await Navigation.PushAsync(new MainPage()); 
+		await Navigation.PopToRootAsync();
+    }
 }

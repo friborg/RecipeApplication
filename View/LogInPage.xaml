@@ -8,39 +8,54 @@
 
     <VerticalStackLayout>
         <Entry
-            Placeholder="Username"
+            Placeholder="Användarnamn"
             PlaceholderColor="SlateGray"
             Text="{Binding UserNameInput}"
             TextColor="Black"
             FontSize="Subtitle"
-            HorizontalOptions="Start"
+            FontFamily="Chocolates" 
+            HorizontalOptions="Center"
             MaxLength="25" >
         </Entry>
         <Entry
-            Placeholder="Password"
+            x:Name="PasswordEntry"
+            Placeholder="Lösenord"
             IsPassword="True"
             PlaceholderColor="SlateGray"
             Text="{Binding PasswordInput}"
             FontSize="Subtitle"
+            FontFamily="Chocolates" 
             TextColor="Black"
-            HorizontalOptions="Start"
+            HorizontalOptions="Center"
             MaxLength="20"
         />
         <Button
-            Text="Log in"
+            x:Name="TogglePasswordBtn"
+            Text="Visa lösenord"
             TextColor="Teal"
             BorderColor="Teal"
             BorderWidth="2"
-            HorizontalOptions="Start"
-            FontSize="20"
-            FontFamily="Recoleta"
+            HorizontalOptions="Center"
+            FontSize="17"
+            FontFamily="Chocolates" 
+            Clicked="ShowPasswordClicked">
+        </Button>
+        <Button
+            Text="Logga in"
+            TextColor="Teal"
+            BorderColor="Teal"
+            BorderWidth="2"
+            HorizontalOptions="Center"
+            FontSize="25"
+            FontFamily="Chocolates" 
             Clicked="ToStartPage"
             />
         <Label
             Text="{Binding LogInStatus}"
             TextColor="Teal"
             FontSize="25"
-            HorizontalTextAlignment="Start"
+            FontFamily="Chocolates" 
+            HorizontalTextAlignment="Center"
             />
     </VerticalStackLayout>
 </ContentPage>

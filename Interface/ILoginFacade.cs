@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipeApp.ViewModels
+namespace RecipeApp.Interface
 {
-    public class DietRestriction
+    internal interface ILoginFacade
     {
-        public string Name { get; set; }
+        bool LoginSuccess(string username, string password);
     }
 }
-

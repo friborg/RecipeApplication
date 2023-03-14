@@ -8,7 +8,7 @@
     <VerticalStackLayout>
         <Label 
             Text="{Binding Title}"
-            FontFamily="Recoleta"
+            FontFamily="Chocolates"
             TextColor="Teal"
             FontSize="28"
             HorizontalOptions="Center">
@@ -21,11 +21,13 @@
                     x:DataType="{x:Type x:String}"
                     >
                     <Grid
-                            RowDefinitions="Auto"
-                            ColumnDefinitions="Auto">
+                        RowDefinitions="Auto"
+                        ColumnDefinitions="Auto">
                         <Label
                             Grid.Row="0"
                             Grid.Column="0"
+                            FontFamily="Chocolates"
+                            FontSize="15"
                         Text="{Binding .}"
                             TextColor="Black">
                         </Label>
@@ -46,6 +48,8 @@
                         <Label
                             Grid.Row="0"
                             Grid.Column="0"
+                            FontFamily="Chocolates"
+                            FontSize="15"
                         Text="{Binding .}"
                             TextColor="Black">
                         </Label>
