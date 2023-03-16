@@ -38,7 +38,7 @@ namespace RecipeApp.ViewModels
                     registerSuccess = true;
                 }
             }
-            if (registerSuccess && UserNameInput != "" && PasswordInput != "")
+            if (registerSuccess && UserNameInput != null && UserNameInput != "" && PasswordInput != null && PasswordInput != "")
             {
                 Customer customer = new Customer()
                 {

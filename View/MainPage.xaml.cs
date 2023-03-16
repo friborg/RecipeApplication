@@ -3,7 +3,7 @@
 public partial class MainPage : ContentPage
 {
     bool startPage = false;
-    ViewModels.MainPageViewModel Vm = new ViewModels.MainPageViewModel();
+    readonly ViewModels.MainPageViewModel Vm = new();
 	public MainPage()
 	{
 		InitializeComponent();
@@ -14,7 +14,7 @@ public partial class MainPage : ContentPage
         base.OnAppearing();
         if (!startPage)
         {
-            await Vm.DeleteOldData(); // rensar databasen på recept som ej går att komma åt längre
+            ViewModels.MainPageViewModel.DeleteOldData(); // rensar databasen på recept som ej går att komma åt längre
             startPage = true;
         }
     }

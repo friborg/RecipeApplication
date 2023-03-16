@@ -12,6 +12,7 @@ namespace RecipeApp.Models
         public string LoggedInUsername { get; set; }
         public string ChosenRecipeId { get; set; }
         public string ChosenRecipeName { get; set; }
+        public string ImageURL { get; set; }
         public string ChosenMealTitle { get; set; }
         public DateOnly CurrentDate { get; set; }
     }

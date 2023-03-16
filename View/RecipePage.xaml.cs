@@ -4,7 +4,7 @@ namespace RecipeApp.View;
 
 public partial class RecipePage : ContentPage
 {
-    RecipePageViewModel Vm = new RecipePageViewModel();
+    readonly RecipePageViewModel Vm = new();
     bool startPage = false;
     public RecipePage()
     {

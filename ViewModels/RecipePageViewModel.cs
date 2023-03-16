@@ -17,12 +17,18 @@ namespace RecipeApp.ViewModels
         [ObservableProperty]
         List<string> cookingSteps;
         [ObservableProperty]
+        string url;
+        [ObservableProperty]
         string title;
+        [ObservableProperty]
+        string portions;
 
         public async Task GiveRecipeValues()
         {
             Rootobject recipe = await API.GetRecipeFromId(RecipeId.CurrentRecipeId);
             Title = recipe.Title;
+            Portions = "Antal portioner: " + recipe.PortionsDescription;
+            Url = RecipeId.StaticURL;
 
             List<string> items = new(); // det går ej att ge värdena direkt till IngredientItems och CookingSteps
             List<string> steps = new (); // därav gör jag mellanhänder i form av dessa listor som de tidigare nämnda listorna kan kopiera 

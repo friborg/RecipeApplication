@@ -4,7 +4,7 @@ namespace RecipeApp.Models;
 
 public partial class RegisterUserPage : ContentPage
 {
-    RegisterUserPageViewModel Vm = new RegisterUserPageViewModel();
+    readonly RegisterUserPageViewModel Vm = new RegisterUserPageViewModel();
     public RegisterUserPage()
     {
         InitializeComponent();
@@ -16,7 +16,7 @@ public partial class RegisterUserPage : ContentPage
         bool success = await Vm.CreateNewUser();
         if (success)
         {
-            await Task.Delay(2000); // paus för att hinna läsa status-texten
+            await Task.Delay(1000); // paus för att hinna läsa status-texten
             await Navigation.PushAsync(new LogInPage());
         }
     }

@@ -10,7 +10,7 @@ namespace RecipeApp.ViewModels
 {
     class MainPageViewModel
     {
-        public async Task DeleteOldData()
+        public static void DeleteOldData() 
         {
             Connections.Databases.RelationsCollection().DeleteMany(r => r.CurrentDate < DateOnly.FromDateTime(DateTime.Now));
         }

@@ -5,7 +5,7 @@ namespace RecipeApp.View;
 
 public partial class MyPage : ContentPage
 {
-	MyPageViewModel Vm = new MyPageViewModel();
+    readonly MyPageViewModel Vm = new();
 	public MyPage()
 	{
 		InitializeComponent();

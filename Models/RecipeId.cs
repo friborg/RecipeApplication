@@ -8,6 +8,7 @@ namespace RecipeApp.Models
 {
     internal static class RecipeId
     {
-        public static string CurrentRecipeId { get; set; } 
+        public static string CurrentRecipeId { get; set; }
+        public static string StaticURL { get; set; }
     }
 }

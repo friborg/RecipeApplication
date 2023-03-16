@@ -46,21 +46,7 @@
             FontFamily="Chocolates"
             FontSize="15">
         </Label>
-        <Label
-            Text="Dina favoriter"
-            TextColor="Teal"
-            FontFamily="Chocolates"
-            FontSize="22">
-        </Label>
-        <Button
-                Text="Se sparade recept"
-                TextColor="Teal"
-                BackgroundColor="WhiteSmoke"
-            BorderColor="Teal"
-            BorderWidth="2"
-            HorizontalOptions="Center"
-            FontFamily="Chocolates">
-        </Button>
+        
         <Button
             Text="Logga ut"
                 TextColor="Teal"

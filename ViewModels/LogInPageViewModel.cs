@@ -37,13 +37,13 @@ namespace RecipeApp.ViewModels
 
             if (_loginFacade.LoginSuccess(UserNameInput, PasswordInput))
             {
-                LogInStatus = "Login successful!";
+                LogInStatus = "Inloggningen lyckades!";
                 LoggedInUser.Username = UserNameInput;
                 return Task.FromResult(true);
             }
             else
             {
-                LogInStatus = "Wrong username or password, please try again";
+                LogInStatus = "Fel användarnamn eller lösenord, vänligen försök igen.";
                 return Task.FromResult(false);
             }
         }

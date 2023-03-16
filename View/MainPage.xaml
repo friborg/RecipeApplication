@@ -6,9 +6,8 @@
              Title="">
     <ScrollView>
         <VerticalStackLayout>
-
-                <Image
-                Source="logo3.png"
+            <Image
+                Source="food.png"
                 HeightRequest="150"
                 WidthRequest="150"
                     HorizontalOptions="Center">
@@ -35,7 +34,7 @@
                 Padding="100">
                 <Button
             Text="Logga in"
-                    TextColor="Teal"
+                    TextColor="#398BA0"
                     BackgroundColor="WhiteSmoke"
                     BorderColor="Teal"
                     BorderWidth="2"
@@ -48,7 +47,7 @@
             />
                 <Button
             Text="Ny användare"
-            TextColor="Teal"
+            TextColor="#398BA0"
                     BackgroundColor="WhiteSmoke"
                     BorderColor="Teal"
                     BorderWidth="2"

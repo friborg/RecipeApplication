@@ -10,52 +10,93 @@
             Text="{Binding Title}"
             FontFamily="Chocolates"
             TextColor="Teal"
-            FontSize="28"
+            FontSize="34"
             HorizontalOptions="Center">
         </Label>
+        <Label
+            Text="{Binding Portions}"
+            TextColor="Teal"
+            FontSize="20"
+            HorizontalOptions="Center">
+        </Label>
+            <Image
+            Source="{Binding Url}"
+            HeightRequest="250"
+            WidthRequest="250">
+                </Image>
 
-        <CollectionView 
+        <Grid
+            ColumnDefinitions="*, *"
+            RowDefinitions="Auto, Auto">
+
+            <Label
+                Text="Ingredienser"
+                Grid.Column="0"
+                Grid.Row="0"
+                BackgroundColor="WhiteSmoke"
+                FontFamily="Chocolates"
+                FontSize="25"
+                TextColor="Teal"
+                HorizontalOptions="Center">
+            </Label>
+            <Label
+                Text="Instruktioner"
+                Grid.Column="1"
+                Grid.Row="0"
+                BackgroundColor="WhiteSmoke"
+                FontFamily="Chocolates"
+                FontSize="25"
+                TextColor="Teal"
+                HorizontalOptions="Center">
+            </Label>
+            <Frame
+                HorizontalOptions="Start"
+            BackgroundColor="WhiteSmoke"
+                BorderColor="#398BA0"
+                WidthRequest="700"
+                Grid.Column="0"
+                Grid.Row="1">
+                <CollectionView 
             ItemsSource="{Binding IngredientItems}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate
                     x:DataType="{x:Type x:String}"
                     >
-                    <Grid
-                        RowDefinitions="Auto"
-                        ColumnDefinitions="Auto">
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="0"
+                            <Label
                             FontFamily="Chocolates"
                             FontSize="15"
                         Text="{Binding .}"
                             TextColor="Black">
-                        </Label>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                            </Label>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
 
-        <CollectionView 
+                <Frame
+                HorizontalOptions="End"
+            BackgroundColor="WhiteSmoke"
+                BorderColor="#398BA0"
+                Grid.Column="1"
+                    Grid.Row="1">
+
+                    <CollectionView 
             ItemsSource="{Binding CookingSteps}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate
                     x:DataType="{x:Type x:String}"
                     >
-                    <Grid
-                            RowDefinitions="Auto"
-                            ColumnDefinitions="Auto">
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="0"
+                                <Label
                             FontFamily="Chocolates"
                             FontSize="15"
                         Text="{Binding .}"
                             TextColor="Black">
-                        </Label>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                                </Label>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Frame>
+            </Grid>
+
     </VerticalStackLayout>
 </ContentPage>

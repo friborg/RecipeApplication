@@ -8,9 +8,9 @@
     <Grid>
         <Button
                 Text="{Binding LoggedInUserName}"
-                TextColor="Teal"
+                TextColor="#398BA0"
             FontFamily="Chocolates" 
-            FontSize="15"
+            FontSize="20"
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"
             BorderWidth="2"
@@ -57,96 +57,119 @@
                 </Button>
             </Grid>
 
-            <Button
+            <Grid
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, AUto, Auto"
+                HorizontalOptions="Center"
+                RowSpacing="20"
+                Padding="70"
+                >
+                <Button
+                    Grid.Row="0"
             Text="Slumpa ett frukost-recept"
                 FontFamily="Chocolates" 
-                FontSize="15"
-                TextColor="Teal"
+                FontSize="18"
+                TextColor="#398BA0"
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"
             BorderWidth="2"
-                HorizontalOptions="Center"
+                    HorizontalOptions="Center"
             Clicked="GetMealFromDb">
-            </Button>
-            <Label
+                </Button>
+                <Label
             x:Name="FrukostLabel"
+                    Grid.Row="1"
                 Text="Inget valt recept, tryck på knappen för att generera ett random"
                 FontFamily="Chocolates" 
-                FontSize="15"
+                FontSize="20"
+                    HorizontalOptions="Center"
                 TextColor="Black">
-            </Label>
-            <Button
+                </Label>
+                <Button
+                    Grid.Row="2"
                 x:Name="FrukostBtn"
                 Text="Frukost: se hela receptet"
                 FontFamily="Chocolates" 
                 FontSize="15"
-                TextColor="Teal"
+                TextColor="#398BA0"
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"
             BorderWidth="2"
-                HorizontalOptions="Center"
+                    HorizontalOptions="Center"
                 Clicked="ViewSelectedtRecipe">
-            </Button>
-            <Button
+                </Button>
+                
+                <Button
+                    Grid.Row="3"
             Text="Slumpa ett lunch-recept"
                 FontFamily="Chocolates" 
-                FontSize="15"
-                TextColor="Teal"
+                FontSize="18"
+                TextColor="#398BA0"
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"
             BorderWidth="2"
-                HorizontalOptions="Center"
+                    HorizontalOptions="Center"
             Clicked="GetMealFromDb">
-            </Button>
-            <Label
+                </Button>
+                <Label
             x:Name="LunchLabel"
+                    Grid.Row="4"
+                    HorizontalOptions="Center"
                 FontFamily="Chocolates" 
-                FontSize="15"
+                FontSize="20"
                 Text="Inget valt recept, tryck på knappen för att generera ett random"
                 TextColor="Black">
-            </Label>
-            <Button
+                </Label>
+                <Button
+                    Grid.Row="5"
+                    Grid.Column="1"
                 x:Name="LunchBtn"
                 FontFamily="Chocolates" 
                 FontSize="15"
                 Text="Lunch: se hela receptet"
-                TextColor="Teal"
+                TextColor="#398BA0"
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"
             BorderWidth="2"
-                HorizontalOptions="Center"
+                    HorizontalOptions="Center"
                 Clicked="ViewSelectedtRecipe">
-            </Button>
-            <Button
+                </Button>
+                
+                <Button
+                    Grid.Row="6"
             Text="Slumpa ett middags-recept"
                 FontFamily="Chocolates" 
-                FontSize="15"
-                TextColor="Teal"
+                FontSize="18"
+                TextColor="#398BA0"
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"
             BorderWidth="2"
-                HorizontalOptions="Center"
+                    HorizontalOptions="Center"
             Clicked="GetMealFromDb">
-            </Button>
-            <Label
+                </Button>
+                <Label
+                    Grid.Row="7"
+                    HorizontalOptions="Center"
             x:Name="MiddagLabel"
                 FontFamily="Chocolates" 
-                FontSize="15"
+                FontSize="20"
                 Text="Inget valt recept, tryck på knappen för att generera ett random"
                 TextColor="Black">
-            </Label>
-            <Button
+                </Label>
+                <Button
+                    Grid.Row="8"
+                    Grid.Column="1"
                 x:Name="MiddagBtn"
                 FontFamily="Chocolates" 
                 FontSize="15"
                 Text="Middag: se hela receptet"
-                TextColor="Teal"
+                TextColor="#398BA0"
                 BackgroundColor="WhiteSmoke"
             BorderColor="Teal"
             BorderWidth="2"
-                HorizontalOptions="Center"
+                    HorizontalOptions="Center"
                 Clicked="ViewSelectedtRecipe">
-            </Button>
+                </Button>
+            </Grid>
 
         </VerticalStackLayout>
     </Grid>

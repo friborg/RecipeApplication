@@ -7,17 +7,25 @@
              BackgroundColor="WhiteSmoke">
 
     <VerticalStackLayout>
-        <Entry
+        <Grid
+            Padding="10"
+            RowDefinitions="Auto, Auto, Auto, Auto"
+            ColumnDefinitions="Auto, 110"
+            RowSpacing="20"
+            HorizontalOptions="Start">
+
+            <Entry
             Placeholder="Användarnamn"
             PlaceholderColor="SlateGray"
             Text="{Binding UserNameInput}"
             TextColor="Black"
             FontSize="Subtitle"
             FontFamily="Chocolates" 
-            HorizontalOptions="Center"
+                Grid.Row="0"
+                Grid.Column="0"
             MaxLength="25" >
-        </Entry>
-        <Entry
+            </Entry>
+            <Entry
             x:Name="PasswordEntry"
             Placeholder="Lösenord"
             IsPassword="True"
@@ -26,36 +34,42 @@
             FontSize="Subtitle"
             FontFamily="Chocolates" 
             TextColor="Black"
-            HorizontalOptions="Center"
+            Grid.Row="1"
+                Grid.Column="0"
             MaxLength="20"
         />
-        <Button
+            <Button
             x:Name="TogglePasswordBtn"
             Text="Visa lösenord"
-            TextColor="Teal"
+            TextColor="#398BA0"
             BorderColor="Teal"
+                BackgroundColor="WhiteSmoke"
             BorderWidth="2"
-            HorizontalOptions="Center"
-            FontSize="17"
+            Grid.Row="1"
+                Grid.Column="1"
+            FontSize="14"
             FontFamily="Chocolates" 
             Clicked="ShowPasswordClicked">
-        </Button>
-        <Button
+            </Button>
+            <Button
             Text="Logga in"
-            TextColor="Teal"
+            TextColor="#398BA0"
             BorderColor="Teal"
+                BackgroundColor="WhiteSmoke"
             BorderWidth="2"
-            HorizontalOptions="Center"
+            Grid.Row="2"
+                Grid.Column="0"
             FontSize="25"
             FontFamily="Chocolates" 
             Clicked="ToStartPage"
             />
+        </Grid>
         <Label
             Text="{Binding LogInStatus}"
             TextColor="Teal"
             FontSize="25"
             FontFamily="Chocolates" 
-            HorizontalTextAlignment="Center"
+            HorizontalTextAlignment="Start"
             />
     </VerticalStackLayout>
 </ContentPage>

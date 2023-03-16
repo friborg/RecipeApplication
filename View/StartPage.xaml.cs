@@ -8,7 +8,7 @@ namespace RecipeApp.Models;
 
 public partial class StartPage : ContentPage
 {
-    private readonly StartPageViewModel Vm = new StartPageViewModel();
+    readonly StartPageViewModel Vm = new();
     bool startPage = false;
     public StartPage()
     {
@@ -42,7 +42,7 @@ public partial class StartPage : ContentPage
 
         List<DbRelation> relation = Databases.RelationsCollection().AsQueryable().ToList();
 
-        foreach (DbRelation item in relation.Where(r => r.CurrentDate == Vm.Date && r.LoggedInUsername == LoggedInUser.Username))
+        foreach (DbRelation item in relation.Where(r => r.CurrentDate == Vm.Date && r.LoggedInUsername == LoggedInUser.Username)) 
         {
             if (item.ChosenMealTitle == "Frukost")
             {
@@ -68,6 +68,7 @@ public partial class StartPage : ContentPage
         foreach (var r in relations.Where(r => r.CurrentDate == Vm.Date && r.LoggedInUsername == LoggedInUser.Username && r.ChosenMealTitle == mealTitle))
         {
             RecipeId.CurrentRecipeId = r.ChosenRecipeId;
+            RecipeId.StaticURL = r.ImageURL;
         }
         if (RecipeId.CurrentRecipeId != null)
         {

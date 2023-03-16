@@ -55,10 +55,12 @@ namespace RecipeApp.ViewModels
                 Recipe = await API.GetRndRecipe(keyword, page);
                 string name = "";
                 string id = "";
+                string url = "";
                 foreach (var item in Recipe.Recipes)
                 {
                     id = item.Id.ToString();
                     name = item.Title.ToString();
+                    url = item.ImageUrl.ToString();
                 }
                 if (id != "" && name != "")
                 {
@@ -67,12 +69,23 @@ namespace RecipeApp.ViewModels
                         Id = Guid.NewGuid(),
                         LoggedInUsername = LoggedInUser.Username,
                         ChosenRecipeId = id,
+                        ImageURL = url,
                         ChosenMealTitle = keyword,
                         ChosenRecipeName = name,
                         CurrentDate = Date
                     };
-                    Databases.RelationsCollection().DeleteOne(r => r.CurrentDate == Date && r.ChosenMealTitle == keyword && LoggedInUserName == LoggedInUser.Username);
-                    Databases.RelationsCollection().InsertOne(relation);
+
+                    List<DbRelation> relations = Databases.RelationsCollection().AsQueryable().Where(r => r.CurrentDate == Date && r.LoggedInUsername == LoggedInUser.Username && r.ChosenMealTitle == keyword).ToList();
+                    if(relations.Count == 0)
+                    {
+                        Databases.RelationsCollection().InsertOne(relation);
+                    }
+                    else
+                    {
+                        Databases.RelationsCollection().DeleteOne(r => r.CurrentDate == Date && r.ChosenMealTitle == keyword && LoggedInUserName == LoggedInUser.Username);
+                        Databases.RelationsCollection().InsertOne(relation);
+                    }
+
                     getRecipe = true;
                 }
             }
