@@ -1,5 +1,3 @@
-using MongoDB.Driver.Core.Connections;
-using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 using RecipeApp.ViewModels;
 
 namespace RecipeApp.Models;
@@ -15,13 +13,11 @@ public partial class RegisterUserPage : ContentPage
 
     private async void OnRegisterClicked(object sender, EventArgs e)
     {
-        Vm.CreateNewUser();
-
-        if (StatusText.Text == "Registrering lyckades!")
+        bool success = await Vm.CreateNewUser();
+        if (success)
         {
-            await Task.Delay(2000);
+            await Task.Delay(2000); // paus för att hinna läsa status-texten
             await Navigation.PushAsync(new LogInPage());
         }
-
     }
 }

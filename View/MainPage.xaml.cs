@@ -14,7 +14,7 @@ public partial class MainPage : ContentPage
         base.OnAppearing();
         if (!startPage)
         {
-            await Vm.DeleteOldData();
+            await Vm.DeleteOldData(); // rensar databasen på recept som ej går att komma åt längre
             startPage = true;
         }
     }

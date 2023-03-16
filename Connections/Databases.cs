@@ -24,19 +24,21 @@ namespace RecipeApp.Connections
             var mongoClient = new MongoClient(settings);
             return mongoClient;
         }
-
-        public static IMongoCollection<Customer> CustomerCollection()
+        public static IMongoDatabase GetDatabase(string databaseName)
         {
             var client = MongoConnection();
-            var database = client.GetDatabase("MyApp");
+            var database = client.GetDatabase(databaseName);
+            return database;
+        }
+        public static IMongoCollection<Customer> CustomerCollection()
+        {
+            var database = GetDatabase("MyApp");
             var collection = database.GetCollection<Customer>("MyAppDatabase");
             return collection; 
         }
-
         public static IMongoCollection<DbRelation> RelationsCollection()
         {
-            var client = MongoConnection();
-            var database = client.GetDatabase("MyAppDbRelations");
+            var database = GetDatabase("MyAppDbRelations");
             var collection = database.GetCollection<DbRelation>("MyApp");
             return collection;
         }

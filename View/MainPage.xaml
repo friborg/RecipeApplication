@@ -6,33 +6,33 @@
              Title="">
     <ScrollView>
         <VerticalStackLayout>
-            <Image
+
+                <Image
                 Source="logo3.png"
-                HeightRequest="100"
-                WidthRequest="100"
-                HorizontalOptions="Center">
-            </Image>
-            <Label
+                HeightRequest="150"
+                WidthRequest="150"
+                    HorizontalOptions="Center">
+                </Image>
+                <Label
                 Text="What's for dinner?"
-                HorizontalOptions="Center"
                 FontSize="35"
                 FontFamily="Chocolates"
                 TextColor="Teal"
+                    HorizontalOptions="Center"
                 />
-            <Label
+                <Label
                 Text="Mealplanning made easy"
-                HorizontalOptions="Center"
                 FontSize="15"
                 FontAttributes="Italic"
                 TextColor="SlateGray"
-                >
-            </Label>
+                    HorizontalOptions="Center">
+                </Label>
 
             <Grid
-                RowDefinitions="65, 65"
+                RowDefinitions="65"
                 ColumnDefinitions="150, 150"
-                Padding="120"
-                HorizontalOptions="Center">
+                HorizontalOptions="Center"
+                Padding="100">
                 <Button
             Text="Logga in"
                     TextColor="Teal"

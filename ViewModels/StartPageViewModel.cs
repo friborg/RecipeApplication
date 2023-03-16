@@ -1,11 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using RecipeApp.Connections;
 using RecipeApp.Models;
 using MongoDB.Driver;
@@ -19,11 +14,6 @@ namespace RecipeApp.ViewModels
 
         [ObservableProperty]
         RecipeFromSearch recipe;
-
-        [ObservableProperty]
-        string recipeTitle;
-        [ObservableProperty]
-        int recipeId;
 
         [ObservableProperty]
         ObservableCollection<string> meals;
@@ -59,11 +49,10 @@ namespace RecipeApp.ViewModels
             bool getRecipe = false;
             while (!getRecipe)
             {
-
                 Random random = new Random();
-                string page = random.Next(1, 900).ToString();
+                string page = random.Next(1, 900).ToString(); // slumpar vilken "page" i API-hämtningen den tar receptet ifrån, det lägsta page-antalet är Frukost på runt 900 pages, därav slumpar jag 1-900
 
-                Recipe = await API.GetRndRecipeFromKeyword(keyword, page);
+                Recipe = await API.GetRndRecipe(keyword, page);
                 string name = "";
                 string id = "";
                 foreach (var item in Recipe.Recipes)

@@ -17,6 +17,7 @@
                 Placeholder="Ange det gamla lösenordet"
                 FontFamily="Chocolates"
                 FontSize="15"
+            TextColor="Black"
                 Text="{Binding OldPassword}"
             BackgroundColor="White">
         </Entry>
@@ -24,6 +25,7 @@
                 Placeholder="Ange det nya lösenordet"
                 FontFamily="Chocolates"
                 FontSize="15"
+            TextColor="Black"
                 Text="{Binding NewPassword}"
                 BackgroundColor="White">
         </Entry>
@@ -40,6 +42,7 @@
         </Button>
         <Label
                 Text="{Binding Status}"
+            TextColor="Teal"
             FontFamily="Chocolates"
             FontSize="15">
         </Label>

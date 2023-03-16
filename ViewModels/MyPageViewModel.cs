@@ -24,18 +24,29 @@ namespace RecipeApp.ViewModels
         [RelayCommand]
         public async void ChangePassword()
         {
-            List<Customer> customerList = await Databases.CustomerCollection().AsQueryable().ToListAsync();
-            foreach (var c in customerList.Where(c => c.UserName == LoggedInUser.Username))
+            if (OldPassword == null || NewPassword == null || OldPassword == " " || NewPassword == " ")
             {
-                if(OldPassword ==  c.Password && NewPassword != c.Password)
+                Status = "Vänligen fyll i båda fälten för att fortsätta";
+            }
+            else 
+            {
+                List<Customer> customerList = await Databases.CustomerCollection().AsQueryable().ToListAsync();
+                foreach (var c in customerList.Where(c => c.UserName == LoggedInUser.Username))
                 {
-                    c.Password = NewPassword;
-                    await Databases.CustomerCollection().UpdateOneAsync(c => c.Password == OldPassword, Builders<Customer>.Update.Set(c => c.Password, NewPassword));
-                    Status = "Ditt lösenord är nu uppdaterat!";
-                }
-                else if(NewPassword == c.Password)
-                {
-                    Status = "Det nya lösenordet kan ej vara samma som föregående lösenord, vänligen försök igen.";
+                    if (OldPassword == c.Password && NewPassword != c.Password)
+                    {
+                        c.Password = NewPassword;
+                        await Databases.CustomerCollection().UpdateOneAsync(c => c.Password == OldPassword, Builders<Customer>.Update.Set(c => c.Password, NewPassword));
+                        Status = "Ditt lösenord är nu uppdaterat!";
+                    }
+                    else if (NewPassword == c.Password)
+                    {
+                        Status = "Det nya lösenordet kan ej vara samma som föregående lösenord, vänligen försök igen.";
+                    }
+                    else if (OldPassword != c.Password)
+                    {
+                        Status = "Det nuvarande lösenordet stämmer ej, vänligen försök igen";
+                    }
                 }
             }
         }

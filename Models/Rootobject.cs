@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RecipeApp.Connections
 {
-    public class Rootobject
+    public class Rootobject // jag har lämnat många oanvända properties för ev. förbättrings- och utvecklings-möjligheter i framtiden
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -29,7 +29,6 @@ namespace RecipeApp.Connections
         public string PortionsDescription { get; set; }
         public object[] Categories { get; set; }
         public string[] MdsaCategories { get; set; } 
-        public int OfferCount { get; set; }
     }
 
     public class Nutritionperportion

@@ -21,9 +21,9 @@ namespace RecipeApp.ViewModels
         [ObservableProperty]
         string status;
 
-        public async void CreateNewUser()
+        public async Task<bool> CreateNewUser()
         {
-            bool registerSuccess = true; // om listan skulle vara tom, och den hoppar över foreachen, så skapar den fortfarande en användare
+            bool registerSuccess = false; // om listan skulle vara tom, och den hoppar över foreachen, så skapar den fortfarande en användare
             List<Customer> customerList = Databases.CustomerCollection().AsQueryable().ToList();
             foreach (var c in customerList)
             {
@@ -33,7 +33,7 @@ namespace RecipeApp.ViewModels
                     registerSuccess = false;
                     break;
                 }
-                else
+                else 
                 {
                     registerSuccess = true;
                 }
@@ -49,6 +49,12 @@ namespace RecipeApp.ViewModels
                 await Databases.CustomerCollection().InsertOneAsync(customer);
                 Status = "Registrering lyckades!";
             }
+            else
+            {
+                Status = "Vänligen fyll i båda fälten för att fortsätta";
+                registerSuccess = false;
+            }
+            return registerSuccess;
         }
     }
 }

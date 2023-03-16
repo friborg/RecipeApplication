@@ -1,11 +1,8 @@
-using MongoDB.Driver;
-using RecipeApp.Connections;
-
 namespace RecipeApp.Models;
 
 public partial class LogInPage : ContentPage
 {
-    ViewModels.LogInPageViewModel Vm = new ViewModels.LogInPageViewModel();
+    ViewModels.LogInPageViewModel Vm = new();
     public LogInPage()
     {
         InitializeComponent();
@@ -17,7 +14,7 @@ public partial class LogInPage : ContentPage
         bool successLogin = await Vm.TryLogIn();
         if (successLogin)
         {
-            await Task.Delay(1000);
+            await Task.Delay(1500); // paus för att hinna läsa status-meddelande
             await Navigation.PushAsync(new StartPage());
         }
     }

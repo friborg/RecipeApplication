@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using RecipeApp.Models;
+using RecipeApp.Connections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,18 +19,13 @@ namespace RecipeApp.ViewModels
         [ObservableProperty]
         string title;
 
-        public RecipePageViewModel()
-        {
-
-        }
-
         public async Task GiveRecipeValues()
         {
-            Connections.Rootobject recipe = await Connections.API.GetRecipeFromId(Models.RecipeId.CurrentRecipeId);
+            Rootobject recipe = await API.GetRecipeFromId(RecipeId.CurrentRecipeId);
             Title = recipe.Title;
 
-            List<string> items = new List<string>();
-            List<string> steps = new List<string>();
+            List<string> items = new(); // det går ej att ge värdena direkt till IngredientItems och CookingSteps
+            List<string> steps = new (); // därav gör jag mellanhänder i form av dessa listor som de tidigare nämnda listorna kan kopiera 
 
             foreach (var i in recipe.IngredientGroups)
             {
