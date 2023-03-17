@@ -44,7 +44,7 @@ namespace RecipeApp.ViewModels
             Date = Date.AddDays(1);
         }
 
-        public async Task GetRecipeFromSearch(string keyword)
+        public async Task GetRecipeFromSearch(string keyword) // keyword är vilken måltid du valt, ex Frukost
         {
             bool getRecipe = false;
             while (!getRecipe)
@@ -82,7 +82,7 @@ namespace RecipeApp.ViewModels
                     }
                     else
                     {
-                        Databases.RelationsCollection().DeleteOne(r => r.CurrentDate == Date && r.ChosenMealTitle == keyword && LoggedInUserName == LoggedInUser.Username);
+                        Databases.RelationsCollection().DeleteOne(r => r.CurrentDate == Date && r.ChosenMealTitle == keyword && LoggedInUserName == LoggedInUser.Username); // om det redan ligger ett recpet på den platasen så byts den ut
                         Databases.RelationsCollection().InsertOne(relation);
                     }
 

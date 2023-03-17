@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Security.Authentication;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Xsl;
+﻿using System.Security.Authentication;
 using MongoDB.Driver;
 using RecipeApp.Models;
 
@@ -24,7 +17,7 @@ namespace RecipeApp.Connections
             var mongoClient = new MongoClient(settings);
             return mongoClient;
         }
-        public static IMongoDatabase GetDatabase(string databaseName)
+        public static IMongoDatabase GetDatabase(string databaseName) // DRY, då jag har två olika anrop på två olika databaser, men på samma MongoDB-konto, så kan de dela anropet 
         {
             var client = MongoConnection();
             var database = client.GetDatabase(databaseName);

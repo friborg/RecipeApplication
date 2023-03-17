@@ -19,7 +19,7 @@ public partial class LogInPage : ContentPage
         }
     }
 
-    private void ShowPasswordClicked(object sender, EventArgs e)
+    private void TogglePasswordVisibleClicked(object sender, EventArgs e) // kunna dölja / visa sitt lösenord vid inloggning 
     {
         if (PasswordEntry.IsPassword == true)
         {

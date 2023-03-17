@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using Microsoft.Maui;
+﻿using System.Text.Json;
 using RecipeApp.Models;
 
 namespace RecipeApp.Connections
@@ -26,7 +19,7 @@ namespace RecipeApp.Connections
             var recipe = JsonSerializer.Deserialize<RecipeFromSearch>(body);
             return recipe;
         }
-        public static async Task<string> APIFetch(string stringRequest)
+        public static async Task<string> APIFetch(string stringRequest) // DRY, kan användas till alla anrop mot ICA API 
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Get, stringRequest);
@@ -42,7 +35,7 @@ namespace RecipeApp.Connections
                 return body;
             }
         }
-        public static string ReplaceStringFromApi(string body)
+        private static string ReplaceStringFromApi(string body)
         {
             body = body.Replace("&aring;", "å");
             body = body.Replace("&auml;", "ä");
