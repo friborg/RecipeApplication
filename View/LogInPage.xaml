@@ -71,5 +71,11 @@
             FontFamily="Chocolates" 
             HorizontalTextAlignment="Start"
             />
+        <Label
+            Text="Redan existerande inlogg: Användarnamn = hanna, Lösenord = friborg"
+            FontSize="20"
+            TextColor="Teal"
+            HorizontalOptions="Center">
+        </Label>
     </VerticalStackLayout>
 </ContentPage>
