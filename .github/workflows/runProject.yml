@@ -13,11 +13,10 @@ jobs:
         with:
           dotnet-version: '6.0.x'
           
-      - name: Install dependencies
-        run: dotnet restore
-      - name: Build
-        run: dotnet build
-      - name: Test with the dotnet CLI
-        run: dotnet test
+      - name: Install Android workload
+        run: dotnet workload install maui-android
+
+      - name: Build and run .NET MAUI project
+        run: dotnet build -t:Run -p:Platform=Android -p:Configuration=Debug
 
 
